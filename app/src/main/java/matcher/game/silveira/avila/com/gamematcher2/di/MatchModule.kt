@@ -7,13 +7,13 @@ import dagger.Provides
 import matcher.game.silveira.avila.com.gamematcher2.db.MatchDao
 import matcher.game.silveira.avila.com.gamematcher2.db.MatchDatabase
 
-@Module
+@Module(includes = [MatchDetailViewModelModule::class])
 class MatchModule{
 
     @Provides
     fun provideDatabase(app : Application) : MatchDatabase{
 
-        return Room.databaseBuilder(app, MatchDatabase::class.java, "task.db")
+        return Room.databaseBuilder(app, MatchDatabase::class.java, "match.db")
             .fallbackToDestructiveMigration().build()
     }
 
