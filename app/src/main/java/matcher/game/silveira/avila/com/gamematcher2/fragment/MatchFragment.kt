@@ -12,6 +12,7 @@ import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.recyclerview.MatchAdapter
+import matcher.game.silveira.avila.com.gamematcher2.viewmodel.MatchViewModel
 import javax.inject.Inject
 
 class MatchFragment : Fragment(), Injectable {

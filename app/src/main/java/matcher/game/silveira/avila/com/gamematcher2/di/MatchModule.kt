@@ -7,7 +7,7 @@ import dagger.Provides
 import matcher.game.silveira.avila.com.gamematcher2.db.MatchDao
 import matcher.game.silveira.avila.com.gamematcher2.db.MatchDatabase
 
-@Module(includes = [MatchDetailViewModelModule::class])
+@Module(includes = [MatchViewModelModule::class])
 class MatchModule{
 
     @Provides

@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import matcher.game.silveira.avila.com.gamematcher2.fragment.MatchViewModel
+import matcher.game.silveira.avila.com.gamematcher2.viewmodel.MatchViewModel
 
 @Module
-abstract class MatchDetailViewModelModule {
+abstract class MatchViewModelModule {
 
     @Binds
     @IntoMap
