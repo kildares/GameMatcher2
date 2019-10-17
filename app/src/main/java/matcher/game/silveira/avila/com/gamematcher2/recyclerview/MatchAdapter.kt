@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import matcher.game.silveira.avila.com.gamematcher2.R
-import matcher.game.silveira.avila.com.gamematcher2.db.Match
+import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 
 class MatchAdapter (matches : List<Match>): RecyclerView.Adapter<MatchAdapter.MatchViewHolder>(){
 

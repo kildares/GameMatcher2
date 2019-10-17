@@ -1,10 +1,8 @@
-package matcher.game.silveira.avila.com.gamematcher2.db
+package matcher.game.silveira.avila.com.gamematcher2.db.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
+import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 
 @Dao
 interface MatchDao {
@@ -19,4 +17,8 @@ interface MatchDao {
 
     @Update
     fun updateMatch(data : Match)
+
+    @Delete
+    fun deleteMatch(data : Match)
+
 }
