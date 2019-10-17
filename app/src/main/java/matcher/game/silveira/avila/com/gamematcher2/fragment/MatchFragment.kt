@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
@@ -22,6 +23,8 @@ class MatchFragment : Fragment(), Injectable {
     @Inject
     lateinit var viewModelFactory : MatchViewModelFactory
 
+    lateinit var fab : FloatingActionButton
+
     private lateinit var viewModel: MatchViewModel
 
     override fun onCreateView(
@@ -30,6 +33,8 @@ class MatchFragment : Fragment(), Injectable {
     ): View? {
         val view = inflater.inflate(R.layout.match_fragment, container, false)
         recyclerView = view.findViewById(R.id.rv_items)
+        fab = view.findViewById(R.id.fab_add_match)
+
         return view
     }
 
@@ -39,7 +44,6 @@ class MatchFragment : Fragment(), Injectable {
         viewModel = ViewModelProviders.of(this, this.viewModelFactory).get(MatchViewModel::class.java)
 
         prepareList()
-
 
 
     }

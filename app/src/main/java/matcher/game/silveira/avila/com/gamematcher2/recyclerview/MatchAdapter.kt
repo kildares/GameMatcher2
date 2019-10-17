@@ -32,6 +32,7 @@ class MatchAdapter (matches : List<Match>): RecyclerView.Adapter<MatchAdapter.Ma
     inner class MatchViewHolder(itemView : View)  : RecyclerView.ViewHolder(itemView)  {
         val tvName = itemView.findViewById<TextView>(R.id.tv_name)
         val tvDate = itemView.findViewById<TextView>(R.id.tv_date)
+        val tvImage = itemView.findViewById<TextView>(R.id.iv_match_image)
     }
 
 
