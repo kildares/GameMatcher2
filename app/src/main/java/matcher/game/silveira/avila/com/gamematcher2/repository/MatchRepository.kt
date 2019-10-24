@@ -13,4 +13,7 @@ class MatchRepository @Inject constructor(matchDao : MatchDao){
         return matchDao.findAll()
     }
 
+    fun addMatchToLiveData(match : Match){
+        matchDao.insertMatch(listOf(match))
+    }
 }

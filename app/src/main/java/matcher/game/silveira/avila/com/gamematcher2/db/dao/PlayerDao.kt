@@ -12,7 +12,7 @@ import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
 interface PlayerDao{
 
     @Insert
-    fun insertPlayer() : LiveData<List<Player>>
+    fun insertPlayer(player : Player)
 
     @Update
     fun updatePlayer(location : Player)

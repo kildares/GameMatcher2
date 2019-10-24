@@ -1,5 +1,6 @@
 package matcher.game.silveira.avila.com.gamematcher2.fragment
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import matcher.game.silveira.avila.com.gamematcher2.CreateMatchActivity
 
 import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
@@ -35,17 +37,23 @@ class MatchFragment : Fragment(), Injectable {
         recyclerView = view.findViewById(R.id.rv_items)
         fab = view.findViewById(R.id.fab_add_match)
 
+        fab.setOnClickListener{
+            startCreateMatchActivity()
+        }
+
         return view
+    }
+
+    private fun startCreateMatchActivity() {
+        var intent = Intent(activity, CreateMatchActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         viewModel = ViewModelProviders.of(this, this.viewModelFactory).get(MatchViewModel::class.java)
 
         prepareList()
-
-
     }
 
     private fun prepareList() {

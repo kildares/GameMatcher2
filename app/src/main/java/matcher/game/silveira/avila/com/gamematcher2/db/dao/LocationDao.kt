@@ -11,7 +11,7 @@ import matcher.game.silveira.avila.com.gamematcher2.db.entities.Location
 interface LocationDao{
 
     @Insert
-    fun insertLocation() : LiveData<List<Location>>
+    fun insertLocation(location : Location)
 
     @Update
     fun updateLocation(location : Location)

@@ -12,7 +12,7 @@ import matcher.game.silveira.avila.com.gamematcher2.db.entities.Team
 interface TeamDao{
 
     @Insert
-    fun insertLocation() : LiveData<List<Team>>
+    fun insertLocation(team : Team)
 
     @Update
     fun updateLocation(location : Team)

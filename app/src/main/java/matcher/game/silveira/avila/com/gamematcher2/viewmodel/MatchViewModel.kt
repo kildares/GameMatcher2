@@ -7,5 +7,13 @@ import matcher.game.silveira.avila.com.gamematcher2.repository.MatchRepository
 import javax.inject.Inject
 
 class MatchViewModel @Inject constructor(private val matchRepository : MatchRepository) : ViewModel() {
+
     val matchLiveData : LiveData<List<Match>> = matchRepository.getMatchLiveDataList();
+
+    fun createMatch(name : String, location : String, date : String) : Match{
+        val match = Match(name, location, date)
+        matchRepository.addMatchToLiveData(match)
+        return match
+    }
+
 }

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">GameMatcher2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_match_name">Name</string>
+    <string name="hint_match_name">College fun</string>
+    <string name="title_match_location">Location</string>
+    <string name="hint_match_location">Victoria Park</string>
+    <string name="title_match_date">Date</string>
+    <string name="hint_match_date">dd/MM/yyyy</string>
+
 </resources>
