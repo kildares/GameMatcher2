@@ -8,7 +8,7 @@ import matcher.game.silveira.avila.com.gamematcher2.GameMatcherApplication
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AndroidInjectionModule::class, MainActivityModule::class, MatchModule::class])
+@Component(modules = [AndroidInjectionModule::class, MainActivityModule::class, MatchModule::class, CreateMatchActivityModule::class])
 interface ApplicationComponent{
 
     @Component.Builder

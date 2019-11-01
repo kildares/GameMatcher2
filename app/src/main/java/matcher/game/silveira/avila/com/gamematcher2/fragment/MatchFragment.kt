@@ -45,7 +45,7 @@ class MatchFragment : Fragment(), Injectable {
     }
 
     private fun startCreateMatchActivity() {
-        var intent = Intent(activity, CreateMatchActivity::class.java)
+        val intent = Intent(activity, CreateMatchActivity::class.java)
         startActivity(intent)
     }
 

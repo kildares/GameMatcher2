@@ -8,5 +8,8 @@
     <string name="hint_match_location">Victoria Park</string>
     <string name="title_match_date">Date</string>
     <string name="hint_match_date">dd/MM/yyyy</string>
+    <string name="text_crete_match_button">Create</string>
+
+    <string name="toolbar_title_create_match">Create Match</string>
 
 </resources>

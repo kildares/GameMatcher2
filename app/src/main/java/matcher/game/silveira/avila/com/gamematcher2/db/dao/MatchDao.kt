@@ -10,10 +10,8 @@ interface MatchDao {
     @Query(value = "SELECT * FROM `Match`")
     fun findAll() : LiveData<List<Match>>
 
-
     @Insert
     fun insertMatch(data : List<Match>)
-
 
     @Update
     fun updateMatch(data : Match)

@@ -1,11 +1,30 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="DefaultGameTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/tv_text_size</item>
+
+    </style>
+
+    <style name="ExtendedGameTheme" parent="DefaultGameTheme">
+        <item name="android:layout_marginStart">@dimen/margin_start</item>
+        <item name="android:layout_marginEnd">@dimen/margin_end</item>
+        <item name="android:layout_marginTop">@dimen/margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/margin_bottom</item>
+    </style>
+
+    <style name="ToolbarGameTheme" parent = "DefaultGameTheme">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/titleTextSize</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:layout_marginStart">@dimen/margin_zero</item>
+        <item name="android:layout_marginEnd">@dimen/margin_zero</item>
+        <item name="android:layout_marginTop">@dimen/margin_zero</item>
+        <item name="android:layout_marginBottom">@dimen/margin_zero</item>
     </style>
 
 </resources>

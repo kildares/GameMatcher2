@@ -15,7 +15,9 @@ import matcher.game.silveira.avila.com.gamematcher2.CreateMatchActivity
 import matcher.game.silveira.avila.com.gamematcher2.MainActivity
 import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
+import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.viewmodel.MatchViewModel
+import javax.inject.Inject
 
 class CreateMatchFragment : Fragment(), Injectable {
 
@@ -26,20 +28,15 @@ class CreateMatchFragment : Fragment(), Injectable {
 
     private lateinit var matchViewModel : MatchViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        matchViewModel = activity?.run {
-            ViewModelProviders.of(this)[MatchViewModel::class.java]
-        } ?: throw Exception("Invalid Activity")
-    }
+    @Inject
+    lateinit var viewModelFactory : MatchViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.match_fragment, container, false)
+        val view = inflater.inflate(R.layout.fragment_create_match, container, false)
 
         nameEditText = view.findViewById(R.id.et_match_name)
         locationEditText = view.findViewById(R.id.et_match_location)
@@ -47,26 +44,37 @@ class CreateMatchFragment : Fragment(), Injectable {
         saveButton = view.findViewById(R.id.bt_save_match)
 
         saveButton.setOnClickListener{
-            startMainActivity()
-        }
 
+            val createdMatch = createMatch()
+            if(createdMatch){
+                startMainActivity()
+            }
+        }
         return view
     }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        matchViewModel = ViewModelProviders.of(this, this.viewModelFactory).get(MatchViewModel::class.java)
+    }
+
 
     private fun startMainActivity() {
         var intent = Intent(activity, MainActivity::class.java)
         startActivity(intent)
     }
 
-    private fun createMatch() {
+    private fun createMatch() : Boolean {
         val name = nameEditText.text.toString()
         val location = locationEditText.text.toString()
         val date = dateEditText.text.toString()
 
         if(name.isNotEmpty() && location.isNotEmpty() && date.isNotEmpty()){
             matchViewModel.createMatch(name, location, date)
+            return true
         } else {
             Toast.makeText(context, "There is missing information",Toast.LENGTH_SHORT).show();
+            return false
         }
     }
 
