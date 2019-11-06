@@ -9,9 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import matcher.game.silveira.avila.com.gamematcher2.CreateMatchActivity
 import matcher.game.silveira.avila.com.gamematcher2.MainActivity
 import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
@@ -38,9 +36,9 @@ class CreateMatchFragment : Fragment(), Injectable {
 
         val view = inflater.inflate(R.layout.fragment_create_match, container, false)
 
-        nameEditText = view.findViewById(R.id.et_match_name)
-        locationEditText = view.findViewById(R.id.et_match_location)
-        dateEditText = view.findViewById(R.id.et_match_date)
+        nameEditText = view.findViewById(R.id.et_create_match_name)
+        locationEditText = view.findViewById(R.id.et_create_match_location)
+        dateEditText = view.findViewById(R.id.et_create_match_date)
         saveButton = view.findViewById(R.id.bt_save_match)
 
         saveButton.setOnClickListener{

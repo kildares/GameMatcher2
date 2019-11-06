@@ -12,4 +12,8 @@
 
     <string name="toolbar_title_create_match">Create Match</string>
 
+    <string name="example_match_name">Match Name</string>
+    <string name="example_match_location">Match Location</string>
+    <string name="example_match_date">dd/MM/yyyy</string>
+
 </resources>

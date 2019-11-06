@@ -13,8 +13,6 @@ class MatchViewModel @Inject constructor(private val matchRepository : MatchRepo
 
     val matchLiveData : LiveData<List<Match>> = matchRepository.getMatchLiveDataList();
 
-
-
     fun createMatch(name : String, location : String, date : String) : Match{
         val match = Match(name, location, date)
 

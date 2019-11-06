@@ -7,11 +7,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.fragment_create_match.view.*
 import matcher.game.silveira.avila.com.gamematcher2.CreateMatchActivity
 
 import matcher.game.silveira.avila.com.gamematcher2.R
+import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.recyclerview.MatchAdapter
@@ -20,12 +24,12 @@ import javax.inject.Inject
 
 class MatchFragment : Fragment(), Injectable {
 
-    private lateinit var recyclerView : RecyclerView;
-    private lateinit var matchAdapter : MatchAdapter
+    private lateinit var recyclerView: RecyclerView;
+    private lateinit var matchAdapter: MatchAdapter
     @Inject
-    lateinit var viewModelFactory : MatchViewModelFactory
+    lateinit var viewModelFactory: MatchViewModelFactory
 
-    lateinit var fab : FloatingActionButton
+    lateinit var fab: FloatingActionButton
 
     private lateinit var viewModel: MatchViewModel
 
@@ -37,7 +41,7 @@ class MatchFragment : Fragment(), Injectable {
         recyclerView = view.findViewById(R.id.rv_items)
         fab = view.findViewById(R.id.fab_add_match)
 
-        fab.setOnClickListener{
+        fab.setOnClickListener {
             startCreateMatchActivity()
         }
 
@@ -51,15 +55,29 @@ class MatchFragment : Fragment(), Injectable {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, this.viewModelFactory).get(MatchViewModel::class.java)
+        viewModel =
+            ViewModelProviders.of(this, this.viewModelFactory).get(MatchViewModel::class.java)
 
         prepareList()
     }
 
     private fun prepareList() {
-        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
+        recyclerView.layoutManager = GridLayoutManager(
+            activity,
+            2,
+            GridLayoutManager.VERTICAL,
+            false
+        )
+
         matchAdapter = MatchAdapter(emptyList())
         recyclerView.adapter = matchAdapter
+
+        viewModel.matchLiveData.observe(this, Observer {
+            val matches: List<Match> = viewModel.matchLiveData.value ?: emptyList()
+            matchAdapter.updateDataList(matches)
+        })
+
     }
 
 }
+
