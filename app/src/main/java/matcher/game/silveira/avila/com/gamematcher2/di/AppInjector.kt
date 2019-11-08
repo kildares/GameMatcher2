@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager
 import dagger.android.AndroidInjection
 import dagger.android.HasAndroidInjector
 import dagger.android.support.AndroidSupportInjection
-import matcher.game.silveira.avila.com.gamematcher2.GameMatcherApplication
+import matcher.game.silveira.avila.com.gamematcher2.activity.GameMatcherApplication
 
 object AppInjector{
 

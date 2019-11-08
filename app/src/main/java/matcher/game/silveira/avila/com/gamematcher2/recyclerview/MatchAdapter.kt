@@ -9,12 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 
-class MatchAdapter (matches : List<Match>): RecyclerView.Adapter<MatchAdapter.MatchViewHolder>(){
+class MatchAdapter(var dataList: List<Match>, var listener : MatchOnClickListener) :
+    RecyclerView.Adapter<MatchAdapter.MatchViewHolder>() {
 
-    private var dataList: List<Match> = matches
-
-
-    fun updateDataList(matches : List<Match> ){
+    fun updateDataList(matches: List<Match>) {
         dataList = matches
         notifyDataSetChanged()
     }
@@ -23,7 +21,6 @@ class MatchAdapter (matches : List<Match>): RecyclerView.Adapter<MatchAdapter.Ma
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.match_item, parent, false)
         return MatchViewHolder(view)
-
     }
 
     override fun getItemCount(): Int {
@@ -37,11 +34,21 @@ class MatchAdapter (matches : List<Match>): RecyclerView.Adapter<MatchAdapter.Ma
     }
 
 
-    inner class MatchViewHolder(itemView : View)  : RecyclerView.ViewHolder(itemView)  {
+    inner class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvName = itemView.findViewById<TextView>(R.id.tv_match_name)
         val tvDate = itemView.findViewById<TextView>(R.id.tv_match_date)
         val tvLocation = itemView.findViewById<TextView>(R.id.tv_match_location)
+
+        init {
+            itemView.setOnClickListener {
+                listener.onMatchClicked(adapterPosition)
+            }
+        }
+
     }
 
+    interface MatchOnClickListener{
+        fun onMatchClicked(id : Int)
+    }
 
 }

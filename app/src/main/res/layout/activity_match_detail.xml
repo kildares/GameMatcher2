@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CreateMatchActivity">
-
+    tools:context=".activity.MatchDetailActivity">
 
     <fragment
         android:id="@+id/fr_matches"
-        android:name="matcher.game.silveira.avila.com.gamematcher2.fragment.CreateMatchFragment"
+        android:name="matcher.game.silveira.avila.com.gamematcher2.fragment.MatchDetailFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

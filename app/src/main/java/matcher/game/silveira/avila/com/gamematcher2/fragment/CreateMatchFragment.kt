@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
-import matcher.game.silveira.avila.com.gamematcher2.MainActivity
+import matcher.game.silveira.avila.com.gamematcher2.activity.MainActivity
 import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory

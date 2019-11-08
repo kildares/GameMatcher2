@@ -1,8 +1,9 @@
-package matcher.game.silveira.avila.com.gamematcher2.di
+package matcher.game.silveira.avila.com.gamematcher2.di.module
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import matcher.game.silveira.avila.com.gamematcher2.fragment.CreateMatchFragment
+import matcher.game.silveira.avila.com.gamematcher2.fragment.MatchDetailFragment
 import matcher.game.silveira.avila.com.gamematcher2.fragment.MatchFragment
 
 @Module
@@ -13,5 +14,8 @@ abstract class FragmentBuildersModule{
 
     @ContributesAndroidInjector
     abstract fun contributeCreateMatchFragment() : CreateMatchFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeMatchDetailFragment() : MatchDetailFragment
 
 }

@@ -11,8 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.fragment_create_match.view.*
-import matcher.game.silveira.avila.com.gamematcher2.CreateMatchActivity
+import matcher.game.silveira.avila.com.gamematcher2.activity.CreateMatchActivity
+import matcher.game.silveira.avila.com.gamematcher2.activity.MatchDetailActivity
 
 import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
@@ -22,7 +22,7 @@ import matcher.game.silveira.avila.com.gamematcher2.recyclerview.MatchAdapter
 import matcher.game.silveira.avila.com.gamematcher2.viewmodel.MatchViewModel
 import javax.inject.Inject
 
-class MatchFragment : Fragment(), Injectable {
+class MatchFragment : Fragment(), Injectable, MatchAdapter.MatchOnClickListener {
 
     private lateinit var recyclerView: RecyclerView;
     private lateinit var matchAdapter: MatchAdapter
@@ -53,6 +53,13 @@ class MatchFragment : Fragment(), Injectable {
         startActivity(intent)
     }
 
+    private fun startMatchDetailActivity(position : Int){
+        val intent = Intent(activity, MatchDetailActivity::class.java)
+        viewModel.matchLiveData.value?.get(position)
+        startActivity(intent)
+    }
+
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel =
@@ -69,7 +76,7 @@ class MatchFragment : Fragment(), Injectable {
             false
         )
 
-        matchAdapter = MatchAdapter(emptyList())
+        matchAdapter = MatchAdapter(emptyList(), this)
         recyclerView.adapter = matchAdapter
 
         viewModel.matchLiveData.observe(this, Observer {
@@ -79,5 +86,11 @@ class MatchFragment : Fragment(), Injectable {
 
     }
 
+    override fun onMatchClicked(id: Int) {
+        startMatchDetailActivity(id)
+    }
+
+
 }
+
 
