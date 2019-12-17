@@ -4,4 +4,4 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-class Player(@PrimaryKey val id : Int, val name : String, var position : String)
+class Player(@PrimaryKey var id : Int, var name : String, var position : String)

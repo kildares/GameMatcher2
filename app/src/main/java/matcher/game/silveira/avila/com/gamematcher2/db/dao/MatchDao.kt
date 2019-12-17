@@ -19,4 +19,7 @@ interface MatchDao {
     @Delete
     fun deleteMatch(data : Match)
 
+    @Query(value = "SELECT MAX(id) FROM `Match`")
+    fun findMaxId() : Int
+
 }

@@ -1,6 +1,5 @@
 package matcher.game.silveira.avila.com.gamematcher2.db.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert

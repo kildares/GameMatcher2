@@ -21,4 +21,6 @@
     <string name="example_match_location">Match Location</string>
     <string name="example_match_date">dd/MM/yyyy</string>
 
+    <string name="key_parcelable_match_id">match_id</string>
+
 </resources>
