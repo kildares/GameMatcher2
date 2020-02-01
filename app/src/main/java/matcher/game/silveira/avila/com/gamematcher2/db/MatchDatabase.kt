@@ -11,7 +11,7 @@ import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Team
 
-@Database(entities = [Match::class, Player::class, Location::class, Team::class], version = 1, exportSchema = false)
+@Database(entities = [Match::class, Player::class, Location::class, Team::class], version = 2, exportSchema = false)
 abstract class MatchDatabase : RoomDatabase(){
 
     abstract fun matchDao() : MatchDao

@@ -21,6 +21,14 @@
     <string name="example_match_location">Match Location</string>
     <string name="example_match_date">dd/MM/yyyy</string>
 
+    <string name="key_parcelable_match">match_data</string>
+    <string name="key_parcelable_player">player_data</string>
     <string name="key_parcelable_match_id">match_id</string>
 
+    <string name="text_player_name">Player:</string>
+    <string name="hint_player_name">Robert Rodriguez</string>
+    <string name="text_player_position">Position:</string>
+    <string name="hint_player_position">Attack</string>
+
+    <string name="bt_player_detail_confirm">Confirm</string>
 </resources>

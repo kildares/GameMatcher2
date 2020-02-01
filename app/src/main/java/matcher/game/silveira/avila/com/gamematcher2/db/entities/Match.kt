@@ -8,22 +8,25 @@ import kotlinx.android.parcel.IgnoredOnParcel
 import kotlinx.android.parcel.Parcelize
 
 @Entity
-class Match(@PrimaryKey var id : Int, var name : String, var location : String, var date : String) : Parcelable{
+class Match(val name : String, val location : String, val date : String) : Parcelable{
+
+    @PrimaryKey(autoGenerate = true)
+    var id : Int = 0
+
 
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString()
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!
     ) {
+        id = parcel.readInt()
     }
 
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-
-        dest?.writeInt(id)
-        dest?.writeString(name)
-        dest?.writeString(location)
-        dest?.writeString(date)
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name)
+        parcel.writeString(location)
+        parcel.writeString(date)
+        parcel.writeInt(id)
     }
 
     override fun describeContents(): Int {
@@ -39,4 +42,5 @@ class Match(@PrimaryKey var id : Int, var name : String, var location : String, 
             return arrayOfNulls(size)
         }
     }
+
 }

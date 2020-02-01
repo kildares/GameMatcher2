@@ -56,7 +56,7 @@ class MatchFragment : Fragment(), Injectable, MatchAdapter.MatchOnClickListener 
     private fun startMatchDetailActivity(position : Int){
         val intent = Intent(activity, MatchDetailActivity::class.java)
 
-        intent.putExtra(getString(R.string.key_parcelable_match_id), matchAdapter.dataList[position].id)
+        intent.putExtra(getString(R.string.key_parcelable_match), matchAdapter.dataList[position])
         viewModel.matchLiveData.value?.get(position)
         startActivity(intent)
     }
