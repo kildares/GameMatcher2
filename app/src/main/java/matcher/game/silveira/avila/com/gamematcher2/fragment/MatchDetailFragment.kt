@@ -3,11 +3,14 @@ package matcher.game.silveira.avila.com.gamematcher2.fragment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.ListView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import matcher.game.silveira.avila.com.gamematcher2.R
@@ -59,25 +62,22 @@ class MatchDetailFragment : Fragment(), Injectable, PlayersListViewAdapter.ListV
             startActivityForResult(intent, Activity.RESULT_OK)
         }
 
-        loadPlayers();
+        loadPlayers()
+        loadMatchData()
 
         return view
+    }
+
+    private fun loadMatchData() {
+        mMatchNameTextView.text = mMatch.name
+        mMatchDateTextView.text = mMatch.date
+        mMatchLocationTextView.text = mMatch.location
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        mPlayerViewModel =
-            ViewModelProviders.of(this, this.viewModelFactory).get(PlayerViewModel::class.java)
-
         loadPlayers()
-
-        mPlayerViewModel.playerLiveData?.observe(this, Observer {
-            val players: List<Player> = mPlayerViewModel.playerLiveData!!.value ?: emptyList()
-
-            mPlayersListViewAdapter = PlayersListViewAdapter(players, this)
-            mPlayersListView.adapter = mPlayersListViewAdapter
-        })
     }
 
     fun loadPlayers() {
@@ -86,17 +86,28 @@ class MatchDetailFragment : Fragment(), Injectable, PlayersListViewAdapter.ListV
             mPlayerViewModel =
                 ViewModelProviders.of(this, this.viewModelFactory).get(PlayerViewModel::class.java)
 
-            mPlayerViewModel.playerLiveData?.observe(this, Observer {
-                val players: List<Player> = mPlayerViewModel.playerLiveData!!.value ?: emptyList()
-                mPlayersListViewAdapter.players = players
+            mPlayerViewModel.playerLiveData.observe(this, Observer {
+
+                mPlayerViewModel.loadPlayersByMatchId(mMatch.id)
+                mPlayersListViewAdapter.players = mPlayerViewModel.currentPlayers
                 mPlayersListViewAdapter.notifyDataSetChanged()
             })
-        }
 
-        mPlayerViewModel.loadPlayersByMatchId(mMatch.id);
+            mPlayerViewModel.loadPlayersByMatchId(mMatch.id)
+            mPlayersListViewAdapter = PlayersListViewAdapter(emptyList(), this)
+
+        } else {
+            mPlayerViewModel.loadPlayersByMatchId(mMatch.id);
+        }
     }
 
     override fun onPlayerSelected(player: Player) {
+
+        val intent = Intent(context, PlayerDetailActivity::class.java)
+        intent.putExtra(getString(R.string.key_parcelable_match_id), mMatch.id)
+        intent.putExtra(getString(R.string.key_parcelable_player), player)
+        startActivityForResult(intent, Activity.RESULT_OK)
+
         Toast.makeText(this.context, "onPlayerSelected", Toast.LENGTH_LONG).show()
     }
 

@@ -1,23 +1,38 @@
 package matcher.game.silveira.avila.com.gamematcher2.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import matcher.game.silveira.avila.com.gamematcher2.db.dao.PlayerDao
-import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
 import javax.inject.Inject
 
 class PlayerRepository @Inject constructor(var playerDao: PlayerDao) {
 
-    fun getPlayerLiveDataList(matchId : Int) : LiveData<List<Player>> {
-        return playerDao.findAllPlayersByMatchId(matchId)
+    var playerLiveData: LiveData<List<Player>> = playerDao.findAllPlayers()
+
+    fun getPlayersByMatchId(matchId: Int): List<Player> {
+        return playerLiveData.value!!.filter { it.matchId == matchId }
     }
 
-    fun addPlayer(player : Player) {
-        playerDao.insertPlayer(player)
+    fun getAllPlayers(): LiveData<List<Player>> {
+        return playerLiveData
     }
 
-    fun updatePlayer(player : Player) {
-        playerDao.updatePlayer(player )
+    fun addPlayer(player: Player) {
+        val id = playerDao.insertPlayer(player)
+        player.id = id.toInt()
+//        (playerLiveData.value as ArrayList).add(player)
+        Log.d("addPlayer", "$id")
+
     }
+
+    fun updatePlayer(player: Player) {
+        val id = playerDao.updatePlayer(player)
+        player.id = id
+        Log.d("updatePlayer", "$id")
+        //playerLiveData.value!!.filter { it.id == player.id }
+    }
+
+    // TODO converter no viewmodel para MutableLiveData
 
 }

@@ -2,21 +2,20 @@ package matcher.game.silveira.avila.com.gamematcher2.db.entities
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity(
-    foreignKeys = arrayOf(
-        ForeignKey(
-            entity = Match::class,
-            parentColumns = arrayOf("id"),
-            childColumns = arrayOf("matchId"),
-            onDelete = ForeignKey.CASCADE
-        )
-    )
+    foreignKeys = [ForeignKey(
+        entity = Match::class,
+        parentColumns = arrayOf("id"),
+        childColumns = arrayOf("matchId"),
+        onDelete = ForeignKey.CASCADE
+    )]
 )
-class Player(@PrimaryKey(autoGenerate = true) var id: Int, var name: String, var position: String, var matchId : Int) :
+class Player(@PrimaryKey(autoGenerate = true) var id: Int, var name: String, var position: String, @ColumnInfo(index =  true) var matchId : Int) :
     Parcelable {
 
     constructor(parcel: Parcel) : this(

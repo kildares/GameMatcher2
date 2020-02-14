@@ -11,7 +11,7 @@
     <string name="text_crete_match_button">Create</string>
 
     <string name="title_match_players">Players</string>
-    <string name="bt_add_player">Add Player</string>
+    <string name="bt_add_player">Add</string>
     <string name="bt_pick_team">Pick Teams</string>
 
     <string name="toolbar_title_match_list">Game Matcher</string>
@@ -31,4 +31,7 @@
     <string name="hint_player_position">Attack</string>
 
     <string name="bt_player_detail_confirm">Confirm</string>
+
+
+    <string name="log_event">event</string>
 </resources>

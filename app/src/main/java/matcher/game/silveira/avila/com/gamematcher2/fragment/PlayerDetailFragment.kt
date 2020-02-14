@@ -17,7 +17,6 @@ import matcher.game.silveira.avila.com.gamematcher2.activity.MatchDetailActivity
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
-import matcher.game.silveira.avila.com.gamematcher2.repository.PlayerRepository
 import matcher.game.silveira.avila.com.gamematcher2.viewmodel.PlayerViewModel
 import javax.inject.Inject
 

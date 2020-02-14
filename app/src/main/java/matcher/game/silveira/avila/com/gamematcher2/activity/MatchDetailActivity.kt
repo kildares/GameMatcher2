@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -31,8 +32,10 @@ class MatchDetailActivity : AppCompatActivity(), HasAndroidInjector {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == Activity.RESULT_OK){
+            Log.d(getString(R.string.log_event), "Player added OK")
             Toast.makeText(this, "Player added OK", Toast.LENGTH_LONG).show()
         } else {
+            Log.d(getString(R.string.log_event), "Error adding player")
             Toast.makeText(this, "Error adding player", Toast.LENGTH_LONG).show()
         }
     }
