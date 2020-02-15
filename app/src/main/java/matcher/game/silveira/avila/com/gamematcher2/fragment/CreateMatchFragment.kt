@@ -2,16 +2,16 @@ package matcher.game.silveira.avila.com.gamematcher2.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import matcher.game.silveira.avila.com.gamematcher2.activity.MainActivity
 import matcher.game.silveira.avila.com.gamematcher2.R
+import matcher.game.silveira.avila.com.gamematcher2.activity.MainActivity
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.viewmodel.MatchViewModel
@@ -71,7 +71,7 @@ class CreateMatchFragment : Fragment(), Injectable {
             matchViewModel.createMatch(name, location, date)
             return true
         } else {
-            Toast.makeText(context, "There is missing information",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Please input all fields",Toast.LENGTH_SHORT).show();
             return false
         }
     }

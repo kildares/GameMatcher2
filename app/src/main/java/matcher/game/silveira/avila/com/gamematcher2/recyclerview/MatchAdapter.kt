@@ -7,8 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
-class MatchAdapter(var dataList: List<Match>, var listener : MatchOnClickListener) :
+class MatchAdapter(var dataList: List<Match>, var listener: MatchOnClickListener) :
     RecyclerView.Adapter<MatchAdapter.MatchViewHolder>() {
 
     fun updateDataList(matches: List<Match>) {
@@ -27,8 +29,15 @@ class MatchAdapter(var dataList: List<Match>, var listener : MatchOnClickListene
     }
 
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
+
+        val date = LocalDate.of(
+            Integer.valueOf(dataList[position].date.substring(4)),
+            Integer.valueOf(dataList[position].date.substring(2, 4)),
+            Integer.valueOf(dataList[position].date.substring(0, 2))
+        ).format(DateTimeFormatter.ofPattern("dd/MM/yy"))
+
         holder.tvName?.text = dataList[position].name
-        holder.tvDate?.text = dataList[position].date
+        holder.tvDate?.text = date
         holder.tvLocation?.text = dataList[position].location
     }
 
@@ -46,8 +55,8 @@ class MatchAdapter(var dataList: List<Match>, var listener : MatchOnClickListene
 
     }
 
-    interface MatchOnClickListener{
-        fun onMatchClicked(id : Int)
+    interface MatchOnClickListener {
+        fun onMatchClicked(id: Int)
     }
 
 }

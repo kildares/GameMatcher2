@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -22,6 +21,8 @@ import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.recyclerview.PlayersListViewAdapter
 import matcher.game.silveira.avila.com.gamematcher2.viewmodel.PlayerViewModel
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 
@@ -74,8 +75,15 @@ class MatchDetailFragment : Fragment(), Injectable, PlayersListViewAdapter.ListV
     }
 
     private fun loadMatchData() {
+
+        val date = LocalDate.of(
+            Integer.valueOf(mMatch.date.substring(4)),
+            Integer.valueOf(mMatch.date.substring(2, 4)),
+            Integer.valueOf(mMatch.date.substring(0, 2)))
+            .format(DateTimeFormatter.ofPattern("dd/MM/yy"))
+
         mMatchNameTextView.text = mMatch.name
-        mMatchDateTextView.text = mMatch.date
+        mMatchDateTextView.text = date
         mMatchLocationTextView.text = mMatch.location
     }
 
@@ -102,8 +110,6 @@ class MatchDetailFragment : Fragment(), Injectable, PlayersListViewAdapter.ListV
         intent.putExtra(getString(R.string.key_parcelable_match_id), mMatch.id)
         intent.putExtra(getString(R.string.key_parcelable_player), player)
         startActivityForResult(intent, Activity.RESULT_OK)
-
-        Toast.makeText(this.context, "onPlayerSelected", Toast.LENGTH_LONG).show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

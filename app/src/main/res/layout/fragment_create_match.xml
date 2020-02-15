@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,8 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ToolbarGameTheme"
-        app:layout_constraintTop_toTopOf="parent"
         >
+
+        <TextView
+            android:id="@+id/toolbar_title_create_match"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_top"
+            android:text="@string/toolbar_title_match_list"
+            android:textColor="@color/colorTextPrimary"
+            style="@style/ToolbarGameTheme"
+            />
+
 
         <TextView
             android:text="@string/toolbar_title_create_match"
@@ -25,91 +34,97 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/tv_create_match_name"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title_match_name"
-        app:layout_constraintBottom_toBottomOf="@+id/et_create_match_name"
-        app:layout_constraintEnd_toEndOf="@+id/tv_create_match_location"
-        app:layout_constraintTop_toTopOf="@+id/et_create_match_name"
-        style="@style/ExtendedGameTheme"
-        />
+        android:orientation="horizontal"
+        >
 
-    <EditText
-        android:id="@+id/et_create_match_name"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_create_match_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_match_name"
+            android:layout_margin="@dimen/margin_top"
+            android:textSize="@dimen/player_text_size"
+            style="@style/ExtendedGameTheme"
+            android:textColor="@color/colorTextPrimary"
+
+            />
+
+        <EditText
+            android:id="@+id/et_create_match_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_match_name"
+            android:inputType="text"
+            android:layout_margin="@dimen/margin_top"
+            android:importantForAutofill="no" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_match_name"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/et_create_match_location"
-        app:layout_constraintEnd_toEndOf="@+id/et_create_match_location"
-        app:layout_constraintTop_toBottomOf="@+id/tb_create_match"
-        style="@style/ExtendedGameTheme"
+        android:orientation="horizontal"
+        >
 
-        />
+        <TextView
+            android:id="@+id/tv_create_match_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_match_location"
+            android:layout_margin="@dimen/margin_top"
+            android:textSize="@dimen/player_text_size"
+            android:textColor="@color/colorTextPrimary"
+            />
 
-    <TextView
-        android:id="@+id/tv_create_match_location"
-        android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/et_create_match_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_match_location"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:layout_margin="@dimen/margin_top"
+
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title_match_location"
-        app:layout_constraintBottom_toTopOf="@+id/et_create_match_date"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_create_match_location"
-        style="@style/ExtendedGameTheme"
+        android:orientation="horizontal"
+        >
 
-        />
+        <TextView
+            android:id="@+id/tv_create_match_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_match_date"
+            android:textSize="@dimen/player_text_size"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_margin="@dimen/margin_top"
 
-    <EditText
-        android:id="@+id/et_create_match_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_match_location"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        app:layout_constraintLeft_toRightOf="@+id/tv_create_match_location"
-        app:layout_constraintTop_toBottomOf="@+id/et_create_match_name"
-        style="@style/ExtendedGameTheme"
+            />
 
-        />
-
-    <TextView
-        android:id="@+id/tv_create_match_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_match_date"
-        app:layout_constraintBottom_toBottomOf="@+id/et_create_match_date"
-        app:layout_constraintEnd_toEndOf="@+id/tv_create_match_location"
-        app:layout_constraintTop_toTopOf="@+id/et_create_match_date"
-        style="@style/ExtendedGameTheme"
-
-        />
-
-    <EditText
-        android:id="@+id/et_create_match_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_match_date"
-        android:importantForAutofill="no"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="@+id/et_create_match_location"
-        app:layout_constraintLeft_toRightOf="@+id/tv_create_match_date"
-        app:layout_constraintStart_toStartOf="@+id/et_create_match_location"
-        app:layout_constraintTop_toBottomOf="@+id/et_create_match_location"
-        style="@style/ExtendedGameTheme"
-
-        />
+        <EditText
+            android:id="@+id/et_create_match_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_match_date"
+            android:importantForAutofill="no"
+            android:inputType="date"
+            android:layout_margin="@dimen/margin_top"
+            />
+    </LinearLayout>
 
     <Button
         android:id="@+id/bt_save_match"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/text_crete_match_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_create_match_date"
-        style="@style/ExtendedGameTheme"
+        android:layout_margin="@dimen/margin_top"
 
         />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
