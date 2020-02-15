@@ -1,15 +1,16 @@
 package matcher.game.silveira.avila.com.gamematcher2.activity
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import matcher.game.silveira.avila.com.gamematcher2.R
+import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
+import matcher.game.silveira.avila.com.gamematcher2.fragment.PlayerDetailFragment
 import javax.inject.Inject
 
-class MatchDetailActivity : AppCompatActivity(), HasAndroidInjector {
+class PlayerDetailActivity : AppCompatActivity(), HasAndroidInjector {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
@@ -18,11 +19,12 @@ class MatchDetailActivity : AppCompatActivity(), HasAndroidInjector {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_match_detail)
-    }
+        setContentView(R.layout.activity_player_detail)
 
+        val player = intent.extras?.getParcelable<Player>(getString(R.string.key_parcelable_player))
+        val matchId = intent.extras?.getInt(getString(R.string.key_parcelable_match_id))
+        val fragment = supportFragmentManager.findFragmentById(R.id.fr_player_detail) as PlayerDetailFragment
+        fragment.loadPlayer(player, matchId!!);
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
     }
 }

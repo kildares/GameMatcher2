@@ -1,23 +1,23 @@
 package matcher.game.silveira.avila.com.gamematcher2.fragment
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.activity.CreateMatchActivity
 import matcher.game.silveira.avila.com.gamematcher2.activity.MatchDetailActivity
-
-import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
-import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
+import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.recyclerview.MatchAdapter
 import matcher.game.silveira.avila.com.gamematcher2.viewmodel.MatchViewModel
 import javax.inject.Inject
@@ -55,10 +55,11 @@ class MatchFragment : Fragment(), Injectable, MatchAdapter.MatchOnClickListener 
 
     private fun startMatchDetailActivity(position : Int){
         val intent = Intent(activity, MatchDetailActivity::class.java)
+
+        intent.putExtra(getString(R.string.key_parcelable_match), matchAdapter.dataList[position])
         viewModel.matchLiveData.value?.get(position)
         startActivity(intent)
     }
-
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -88,6 +89,12 @@ class MatchFragment : Fragment(), Injectable, MatchAdapter.MatchOnClickListener 
 
     override fun onMatchClicked(id: Int) {
         startMatchDetailActivity(id)
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Toast.makeText(activity, "onActivityResult Fragment", Toast.LENGTH_LONG).show()
     }
 
 

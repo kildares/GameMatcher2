@@ -20,6 +20,7 @@
             android:text="@string/toolbar_title_create_match"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorTextPrimary"
             />
 
     </androidx.appcompat.widget.Toolbar>

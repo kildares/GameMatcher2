@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/DefaultGameTheme">
-        <activity android:name=".activity.MatchDetailActivity"></activity>
+        <activity android:name=".activity.PlayerDetailActivity"></activity>
+        <activity android:name=".activity.MatchDetailActivity" />
         <activity android:name=".activity.CreateMatchActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
