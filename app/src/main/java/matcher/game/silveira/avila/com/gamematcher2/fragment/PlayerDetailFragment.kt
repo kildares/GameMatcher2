@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -23,6 +24,8 @@ class PlayerDetailFragment : Fragment(), Injectable {
     private lateinit var mConfirmButton : Button
     private lateinit var mPlayerName : EditText
     private lateinit var mPlayerPosition : EditText
+    private lateinit var mPlayerDetailTitle2 : TextView
+
     private var mMatchId : Int = 0
     private var mPlayer : Player? = null
 
@@ -41,6 +44,7 @@ class PlayerDetailFragment : Fragment(), Injectable {
         mConfirmButton = view.findViewById(R.id.bt_player_detail_confirm)
         mPlayerName = view.findViewById(R.id.et_detail_player_name)
         mPlayerPosition = view.findViewById(R.id.et_detail_player_position)
+        mPlayerDetailTitle2 = view.findViewById(R.id.tv_title_player_detail_2)
 
         mConfirmButton.setOnClickListener{
             if(validPlayerInfo()){
@@ -71,11 +75,18 @@ class PlayerDetailFragment : Fragment(), Injectable {
 
     fun loadPlayer(player: Player?, matchId : Int) {
 
+        if(player == null){
+            mPlayerDetailTitle2.text = getString(R.string.toolbar_title_add_player)
+        } else {
+            mPlayerDetailTitle2.text = getString(R.string.toolbar_title_edit_player)
+        }
+
         mMatchId = matchId
 
         mPlayer = player
         mPlayerName.setText(player?.name)
         mPlayerPosition.setText(player?.position)
+
     }
 
 }

@@ -16,6 +16,12 @@
 
     <string name="toolbar_title_match_list">Game Matcher</string>
     <string name="toolbar_title_create_match">Create Match</string>
+    <string name="toolbar_title_edit_player"> - Edit Player</string>
+    <string name="toolbar_title_add_player"> - Add Player</string>
+
+    <string name="alert_dialog_remove_match_title">Remove Match?</string>
+    <string name="alert_dialog_remove_match_positive">Yes</string>
+    <string name="alert_dialog_remove_match_negative">No</string>
 
     <string name="example_match_name">Match Name</string>
     <string name="example_match_location">Match Location</string>

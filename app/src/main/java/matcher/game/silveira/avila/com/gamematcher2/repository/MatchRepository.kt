@@ -5,13 +5,12 @@ import matcher.game.silveira.avila.com.gamematcher2.db.dao.MatchDao
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 import javax.inject.Inject
 
-class MatchRepository @Inject constructor(matchDao : MatchDao){
+class MatchRepository @Inject constructor(private var matchDao: MatchDao){
 
-    var matchDao : MatchDao = matchDao
-
+    val matchLiveData : LiveData<List<Match>> = matchDao.findAll();
 
     fun getMatchLiveDataList() : LiveData<List<Match>>{
-        return matchDao.findAll()
+        return matchLiveData
     }
 
     fun addMatchToLiveData(match : Match){
@@ -20,4 +19,10 @@ class MatchRepository @Inject constructor(matchDao : MatchDao){
         match.id = id
         matchDao.insertMatch(listOf(match))
     }
+
+
+    fun removeMatch(match : Match){
+        matchDao.deleteMatch(match)
+    }
+
 }
