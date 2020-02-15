@@ -12,11 +12,6 @@ import javax.inject.Inject
 class PlayerViewModel @Inject constructor(private val playerRepository : PlayerRepository) : ViewModel() {
 
     var playerLiveData : LiveData<List<Player>> = playerRepository.getAllPlayers();
-    lateinit var currentPlayers : List<Player>
-
-    fun loadPlayersByMatchId(matchId : Int){
-        currentPlayers = playerLiveData.value?.filter { it.matchId == matchId } ?: emptyList()
-    }
 
     fun addPlayer(playerName : String, playerPosition : String, matchId : Int){
 

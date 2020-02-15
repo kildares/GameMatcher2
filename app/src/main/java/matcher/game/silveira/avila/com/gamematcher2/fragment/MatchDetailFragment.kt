@@ -3,6 +3,7 @@ package matcher.game.silveira.avila.com.gamematcher2.fragment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,7 +60,11 @@ class MatchDetailFragment : Fragment(), Injectable, PlayersListViewAdapter.ListV
         mAddPlayerButton.setOnClickListener {
             val intent = Intent(context, PlayerDetailActivity::class.java)
             intent.putExtra(getString(R.string.key_parcelable_match_id), mMatch.id)
-            startActivityForResult(intent, Activity.RESULT_OK)
+            startActivityForResult(intent, resources.getInteger(R.integer.player_added_ok))
+        }
+
+        mPickTeamButton.setOnClickListener {
+            Log.d("Players", mPlayerViewModel.playerLiveData.value?.size.toString())
         }
 
         loadPlayers()
@@ -74,30 +79,20 @@ class MatchDetailFragment : Fragment(), Injectable, PlayersListViewAdapter.ListV
         mMatchLocationTextView.text = mMatch.location
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        loadPlayers()
-    }
-
     fun loadPlayers() {
 
         if (!this::mPlayerViewModel.isInitialized) {
             mPlayerViewModel =
                 ViewModelProviders.of(this, this.viewModelFactory).get(PlayerViewModel::class.java)
 
-            mPlayerViewModel.playerLiveData.observe(this, Observer {
+            mPlayersListViewAdapter = PlayersListViewAdapter(mPlayerViewModel.playerLiveData.value.orEmpty(), this)
+            mPlayersListView.adapter = mPlayersListViewAdapter
 
-                mPlayerViewModel.loadPlayersByMatchId(mMatch.id)
-                mPlayersListViewAdapter.players = mPlayerViewModel.currentPlayers
+            mPlayerViewModel.playerLiveData.observe(this, Observer {
+                Log.d("observed players: ", mPlayerViewModel.playerLiveData.value?.size.toString())
+                mPlayersListViewAdapter.players = it?.filter { it.matchId == mMatch.id} ?: emptyList()
                 mPlayersListViewAdapter.notifyDataSetChanged()
             })
-
-            mPlayerViewModel.loadPlayersByMatchId(mMatch.id)
-            mPlayersListViewAdapter = PlayersListViewAdapter(emptyList(), this)
-
-        } else {
-            mPlayerViewModel.loadPlayersByMatchId(mMatch.id);
         }
     }
 
@@ -109,6 +104,11 @@ class MatchDetailFragment : Fragment(), Injectable, PlayersListViewAdapter.ListV
         startActivityForResult(intent, Activity.RESULT_OK)
 
         Toast.makeText(this.context, "onPlayerSelected", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        //loadPlayers()
     }
 
 }

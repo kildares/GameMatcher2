@@ -1,19 +1,16 @@
 package matcher.game.silveira.avila.com.gamematcher2.fragment
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-
 import matcher.game.silveira.avila.com.gamematcher2.R
-import matcher.game.silveira.avila.com.gamematcher2.activity.MatchDetailActivity
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
@@ -54,8 +51,7 @@ class PlayerDetailFragment : Fragment(), Injectable {
                     mPlayerViewModel.updatePlayer(mPlayer!!.id, mPlayerName.text.toString(), mPlayerPosition.text.toString(), mMatchId)
                 }
 
-                val intent = Intent(context, MatchDetailActivity::class.java)
-                activity!!.setResult(Activity.RESULT_OK, intent)
+                activity!!.setResult(Activity.RESULT_OK)
                 activity!!.finish()
             } else {
                 Toast.makeText(context, "Invalid player information", Toast.LENGTH_LONG).show()

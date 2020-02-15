@@ -33,6 +33,4 @@ class PlayerRepository @Inject constructor(var playerDao: PlayerDao) {
         //playerLiveData.value!!.filter { it.id == player.id }
     }
 
-    // TODO converter no viewmodel para MutableLiveData
-
 }
