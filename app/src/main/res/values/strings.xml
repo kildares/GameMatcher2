@@ -23,6 +23,10 @@
     <string name="alert_dialog_remove_match_positive">Yes</string>
     <string name="alert_dialog_remove_match_negative">No</string>
 
+    <string name="alert_dialog_remove_player_title">Remove Player?</string>
+    <string name="alert_dialog_remove_player_positive">Yes</string>
+    <string name="alert_dialog_remove_player_negative">No</string>
+
     <string name="example_match_name">Match Name</string>
     <string name="example_match_location">Match Location</string>
     <string name="example_match_date">dd/MM/yyyy</string>

@@ -21,7 +21,6 @@ class PlayerRepository @Inject constructor(var playerDao: PlayerDao) {
     fun addPlayer(player: Player) {
         val id = playerDao.insertPlayer(player)
         player.id = id.toInt()
-//        (playerLiveData.value as ArrayList).add(player)
         Log.d("addPlayer", "$id")
 
     }
@@ -30,7 +29,11 @@ class PlayerRepository @Inject constructor(var playerDao: PlayerDao) {
         val id = playerDao.updatePlayer(player)
         player.id = id
         Log.d("updatePlayer", "$id")
-        //playerLiveData.value!!.filter { it.id == player.id }
+    }
+
+    fun removePlayer(player : Player) {
+        playerDao.deletePlayer(player)
+        Log.d("deletePlayer", "${player.id}")
     }
 
 }

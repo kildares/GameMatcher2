@@ -1,6 +1,7 @@
 package matcher.game.silveira.avila.com.gamematcher2.fragment
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,40 +9,44 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.activity.PlayerDetailActivity
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
-import matcher.game.silveira.avila.com.gamematcher2.recyclerview.PlayersListViewAdapter
+import matcher.game.silveira.avila.com.gamematcher2.recyclerview.player.PlayerAdapter
+import matcher.game.silveira.avila.com.gamematcher2.recyclerview.player.PlayerItemTouchHelperCallback
 import matcher.game.silveira.avila.com.gamematcher2.viewmodel.PlayerViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 
-class MatchDetailFragment : Fragment(), Injectable, PlayersListViewAdapter.ListViewAdapterInteractions {
+class MatchDetailFragment : Fragment(), Injectable, PlayerAdapter.PlayerOnClickListener {
 
     private lateinit var mMatchNameTextView: TextView
     private lateinit var mMatchLocationTextView: TextView
     private lateinit var mMatchDateTextView: TextView
-    private lateinit var mPlayersListView: ListView
+    private lateinit var mPlayerRecyclerView: RecyclerView
     private lateinit var mAddPlayerButton: Button
     private lateinit var mPickTeamButton: Button
 
     private lateinit var mPlayerViewModel: PlayerViewModel
-    private lateinit var mPlayersListViewAdapter : PlayersListViewAdapter
+    private lateinit var mPlayerAdapter: PlayerAdapter
+    private lateinit var mItemTouchHelper : ItemTouchHelper
 
     @Inject
     lateinit var viewModelFactory: MatchViewModelFactory
 
-    private lateinit var mMatch : Match
+    private lateinit var mMatch: Match
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +57,7 @@ class MatchDetailFragment : Fragment(), Injectable, PlayersListViewAdapter.ListV
         mMatchNameTextView = view.findViewById(R.id.tv_detail_match_name)
         mMatchLocationTextView = view.findViewById(R.id.tv_detail_match_location)
         mMatchDateTextView = view.findViewById(R.id.tv_detail_match_date)
-        mPlayersListView = view.findViewById(R.id.lv_detail_match_players)
+        mPlayerRecyclerView = view.findViewById(R.id.rv_players)
         mAddPlayerButton = view.findViewById(R.id.bt_detail_add_player)
         mPickTeamButton = view.findViewById(R.id.bt_detail_pick_team)
 
@@ -79,7 +84,8 @@ class MatchDetailFragment : Fragment(), Injectable, PlayersListViewAdapter.ListV
         val date = LocalDate.of(
             Integer.valueOf(mMatch.date.substring(4)),
             Integer.valueOf(mMatch.date.substring(2, 4)),
-            Integer.valueOf(mMatch.date.substring(0, 2)))
+            Integer.valueOf(mMatch.date.substring(0, 2))
+        )
             .format(DateTimeFormatter.ofPattern("dd/MM/yy"))
 
         mMatchNameTextView.text = mMatch.name
@@ -93,15 +99,44 @@ class MatchDetailFragment : Fragment(), Injectable, PlayersListViewAdapter.ListV
             mPlayerViewModel =
                 ViewModelProviders.of(this, this.viewModelFactory).get(PlayerViewModel::class.java)
 
-            mPlayersListViewAdapter = PlayersListViewAdapter(mPlayerViewModel.playerLiveData.value.orEmpty(), this)
-            mPlayersListView.adapter = mPlayersListViewAdapter
+            prepareList()
 
+            prepareEvents()
             mPlayerViewModel.playerLiveData.observe(this, Observer {
                 Log.d("observed players: ", mPlayerViewModel.playerLiveData.value?.size.toString())
-                mPlayersListViewAdapter.players = it?.filter { it.matchId == mMatch.id} ?: emptyList()
-                mPlayersListViewAdapter.notifyDataSetChanged()
+                mPlayerAdapter.players = it?.filter { it.matchId == mMatch.id } ?: emptyList()
+                mPlayerAdapter.notifyDataSetChanged()
             })
         }
+    }
+
+    private fun prepareEvents() {
+        mItemTouchHelper = ItemTouchHelper(
+            PlayerItemTouchHelperCallback(
+                adapter = mPlayerAdapter,
+                mViewModel = mPlayerViewModel,
+                context = activity as Context
+            )
+        )
+        mItemTouchHelper.attachToRecyclerView(mPlayerRecyclerView)
+    }
+
+    private fun prepareList() {
+        mPlayerRecyclerView.layoutManager = GridLayoutManager(
+            activity,
+            1,
+            GridLayoutManager.VERTICAL,
+            false
+        )
+
+        mPlayerAdapter =
+            PlayerAdapter(
+                mPlayerViewModel.playerLiveData.value.orEmpty(),
+                this
+            )
+        mPlayerRecyclerView.adapter = mPlayerAdapter
+
+
     }
 
     override fun onPlayerSelected(player: Player) {

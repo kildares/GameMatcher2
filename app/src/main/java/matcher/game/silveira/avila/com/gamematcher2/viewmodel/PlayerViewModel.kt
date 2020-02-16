@@ -26,4 +26,10 @@ class PlayerViewModel @Inject constructor(private val playerRepository : PlayerR
         }
     }
 
+    fun removePlayer(position: Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            playerRepository.removePlayer(playerLiveData.value!![position])
+        }
+    }
+
 }
