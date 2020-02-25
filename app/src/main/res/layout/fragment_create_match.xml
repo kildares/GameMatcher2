@@ -69,6 +69,30 @@
         >
 
         <TextView
+            android:id="@+id/tv_sport_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_match_sport"
+            android:textSize="@dimen/player_text_size"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_margin="@dimen/margin_top"
+            />
+
+        <Spinner
+            android:id="@+id/sp_sport_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_top"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
             android:id="@+id/tv_create_match_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

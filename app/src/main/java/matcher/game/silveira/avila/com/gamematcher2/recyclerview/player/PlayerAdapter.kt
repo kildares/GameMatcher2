@@ -15,7 +15,7 @@ class PlayerAdapter(
 ) : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
 
     override fun onBindViewHolder(holder: PlayerAdapter.PlayerViewHolder, pos: Int) {
-        holder.playerPosition?.text = players[pos].position
+        holder.playerPosition?.text = players[pos].positions
         holder.name?.text = players[pos].name
     }
 
@@ -30,7 +30,7 @@ class PlayerAdapter(
                 val pos = it.findViewById<TextView>(R.id.tv_player_position).text
                 val playerName = it.findViewById<TextView>(R.id.tv_player_name).text
 
-                val player = players.stream().filter { p -> p.name == playerName && p.position == pos }.findFirst()
+                val player = players.stream().filter { p -> p.name == playerName && p.positions == pos }.findFirst()
                     .orElseThrow { RuntimeException("Error validating players") }
 
                 adapterInteractions!!.onPlayerSelected(player)

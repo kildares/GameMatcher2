@@ -20,7 +20,6 @@ class MatchRepository @Inject constructor(private var matchDao: MatchDao){
         matchDao.insertMatch(listOf(match))
     }
 
-
     fun removeMatch(match : Match){
         matchDao.deleteMatch(match)
     }

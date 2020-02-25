@@ -15,20 +15,22 @@ import androidx.room.PrimaryKey
         onDelete = ForeignKey.CASCADE
     )]
 )
-class Player(@PrimaryKey(autoGenerate = true) var id: Int, var name: String, var position: String, @ColumnInfo(index =  true) var matchId : Int) :
+class Player(@PrimaryKey(autoGenerate = true) var id: Int, var name: String, @ColumnInfo(index =  true) var matchId : Int,
+             var positions : String) :
     Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readInt()
+        parcel.readInt(),
+        parcel.readString()!!
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(name)
-        parcel.writeString(position)
+        parcel.writeInt(matchId)
+        parcel.writeString(positions)
     }
 
     override fun describeContents(): Int {

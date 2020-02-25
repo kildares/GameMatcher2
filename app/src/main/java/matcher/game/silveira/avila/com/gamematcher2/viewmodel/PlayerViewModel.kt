@@ -13,16 +13,16 @@ class PlayerViewModel @Inject constructor(private val playerRepository : PlayerR
 
     var playerLiveData : LiveData<List<Player>> = playerRepository.getAllPlayers();
 
-    fun addPlayer(playerName : String, playerPosition : String, matchId : Int){
+    fun addPlayer(playerName : String, positions : String, matchId : Int){
 
         viewModelScope.launch (Dispatchers.IO){
-            playerRepository.addPlayer(Player(0, playerName, playerPosition, matchId))
+            playerRepository.addPlayer(Player(0, playerName,  matchId, positions))
         }
     }
 
-    fun updatePlayer(id : Int, name : String, position : String, matchId : Int){
+    fun updatePlayer(id : Int, name : String, positions : String, matchId : Int){
         viewModelScope.launch(Dispatchers.IO) {
-            playerRepository.updatePlayer(Player(id, name, position, matchId))
+            playerRepository.updatePlayer(Player(id, name, matchId, positions ))
         }
     }
 

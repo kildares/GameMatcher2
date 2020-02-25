@@ -67,30 +67,11 @@
             />
     </LinearLayout>
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/rv_positions"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:id="@+id/tv_detail_player_position"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_player_position"
-            android:textSize="@dimen/player_text_size"
-            android:layout_margin="@dimen/margin_top"
-            android:textColor="@color/colorTextPrimary"
-            />
-        <EditText
-            android:id="@+id/et_detail_player_position"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_player_position"
-            android:inputType="text"
-            android:importantForAutofill="no"
-            android:layout_margin="@dimen/margin_top"
-            />
-    </LinearLayout>
+        android:layout_height="160dp"
+        android:layout_marginTop="@dimen/margin_top" />
 
     <Button
         android:id="@+id/bt_player_detail_confirm"
