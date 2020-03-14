@@ -33,6 +33,33 @@
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
+        android:id="@+id/tv_detail_match_sport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/example_match_sport"
+        android:textAlignment="center"
+        android:textColor="@color/colorTextPrimary"
+        android:background="@color/colorAccent"
+
+        android:textSize="@dimen/match_title_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_detail_match" />
+
+    <Space
+        android:id="@+id/sp_match_detail_3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="443dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_match_sport"
+
+        />
+
+    <TextView
         android:id="@+id/tv_detail_match_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +70,7 @@
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_detail_match" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_match_detail_3" />
 
 
     <Space
@@ -119,7 +146,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_players"
         android:layout_width="250dp"
-        android:layout_height="400dp"
+        android:layout_height="380dp"
         android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

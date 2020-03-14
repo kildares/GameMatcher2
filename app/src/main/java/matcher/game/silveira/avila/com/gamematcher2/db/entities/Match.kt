@@ -2,22 +2,20 @@ package matcher.game.silveira.avila.com.gamematcher2.db.entities;
 
 import android.os.Parcel
 import android.os.Parcelable
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-import kotlinx.android.parcel.IgnoredOnParcel
-import kotlinx.android.parcel.Parcelize
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity
-class Match(val name : String, val location : String, val date : String) : Parcelable{
+class Match(val name : String, val location : String, val date : String, val sport : String) : Parcelable{
 
     @PrimaryKey(autoGenerate = true)
     var id : Int = 0
 
-
     constructor(parcel: Parcel) : this(
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
     ) {
         id = parcel.readInt()
     }
@@ -26,6 +24,7 @@ class Match(val name : String, val location : String, val date : String) : Parce
         parcel.writeString(name)
         parcel.writeString(location)
         parcel.writeString(date)
+        parcel.writeString(sport)
         parcel.writeInt(id)
     }
 

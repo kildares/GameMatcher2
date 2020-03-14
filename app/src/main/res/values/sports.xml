@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sports_list">
+        <item>Football (5-a-side)</item>
+        <item>Football (7-a-side)</item>
+        <item>Football (11-a-side)</item>
+        <item>Basketball</item>
+        <item>Volleyball</item>
+        <item>Handball</item>
+<!--        <item>Cricket</item>-->
+<!--        <item>Rugby</item>-->
+<!--        <item>Ice Hockey</item>-->
+<!--        <item>American Football</item>-->
+    </string-array>
+    
+    
+</resources>

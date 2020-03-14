@@ -6,6 +6,7 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import matcher.game.silveira.avila.com.gamematcher2.R
+import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
 import matcher.game.silveira.avila.com.gamematcher2.fragment.PlayerDetailFragment
 import javax.inject.Inject
@@ -22,9 +23,9 @@ class PlayerDetailActivity : AppCompatActivity(), HasAndroidInjector {
         setContentView(R.layout.activity_player_detail)
 
         val player = intent.extras?.getParcelable<Player>(getString(R.string.key_parcelable_player))
-        val matchId = intent.extras?.getInt(getString(R.string.key_parcelable_match_id))
+        val match = intent.extras?.getParcelable<Match>(getString(R.string.key_parcelable_match))
         val fragment = supportFragmentManager.findFragmentById(R.id.fr_player_detail) as PlayerDetailFragment
-        fragment.loadPlayer(player, matchId!!);
+        fragment.loadPlayer(player, match!!);
 
     }
 }

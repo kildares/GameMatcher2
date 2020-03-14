@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">GameMatcher2</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="title_match_name">Name:</string>
+    <string name="title_match_name">Name</string>
     <string name="hint_match_name">College fun</string>
-    <string name="title_match_location">Location:</string>
+    <string name="title_match_location">Location</string>
     <string name="hint_match_location">Victoria Park</string>
-    <string name="title_match_date">Date:</string>
+    <string name="title_match_date">Date</string>
+    <string name="title_match_sport">Sport</string>
     <string name="hint_match_date">dd/MM/yyyy</string>
     <string name="text_crete_match_button">Create</string>
 
@@ -28,17 +28,23 @@
     <string name="alert_dialog_remove_player_negative">No</string>
 
     <string name="example_match_name">Match Name</string>
+    <string name="example_match_sport">Sport</string>
     <string name="example_match_location">Match Location</string>
     <string name="example_match_date">dd/MM/yyyy</string>
+    <string name="example_player_position">Position</string>
 
     <string name="key_parcelable_match">match_data</string>
     <string name="key_parcelable_player">player_data</string>
-    <string name="key_parcelable_match_id">match_id</string>
 
-    <string name="text_player_name">Player:</string>
+    <string name="text_player_name">Player</string>
     <string name="hint_player_name">Robert Rodriguez</string>
-    <string name="text_player_position">Position:</string>
+    <string name="text_player_position">Position</string>
     <string name="hint_player_position">Attack</string>
+
+    <string name="checkbox_position_attack">Attack</string>
+    <string name="checkbox_position_defense">Defense</string>
+    <string name="checkbox_position_midfield">Midfield</string>
+    <string name="checkbox_position_goal">Goal</string>
 
     <string name="bt_player_detail_confirm">Confirm</string>
 

@@ -24,6 +24,7 @@ import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.recyclerview.player.PlayerAdapter
 import matcher.game.silveira.avila.com.gamematcher2.recyclerview.player.PlayerItemTouchHelperCallback
+import matcher.game.silveira.avila.com.gamematcher2.domain.SportsFacade
 import matcher.game.silveira.avila.com.gamematcher2.viewmodel.PlayerViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -35,6 +36,7 @@ class MatchDetailFragment : Fragment(), Injectable, PlayerAdapter.PlayerOnClickL
     private lateinit var mMatchNameTextView: TextView
     private lateinit var mMatchLocationTextView: TextView
     private lateinit var mMatchDateTextView: TextView
+    private lateinit var mMatchSportTextView : TextView
     private lateinit var mPlayerRecyclerView: RecyclerView
     private lateinit var mAddPlayerButton: Button
     private lateinit var mPickTeamButton: Button
@@ -60,12 +62,13 @@ class MatchDetailFragment : Fragment(), Injectable, PlayerAdapter.PlayerOnClickL
         mPlayerRecyclerView = view.findViewById(R.id.rv_players)
         mAddPlayerButton = view.findViewById(R.id.bt_detail_add_player)
         mPickTeamButton = view.findViewById(R.id.bt_detail_pick_team)
+        mMatchSportTextView = view.findViewById(R.id.tv_detail_match_sport)
 
         mMatch = activity!!.intent.extras?.getParcelable(getString(R.string.key_parcelable_match))!!
 
         mAddPlayerButton.setOnClickListener {
             val intent = Intent(context, PlayerDetailActivity::class.java)
-            intent.putExtra(getString(R.string.key_parcelable_match_id), mMatch.id)
+            intent.putExtra(getString(R.string.key_parcelable_match), mMatch)
             startActivityForResult(intent, resources.getInteger(R.integer.player_added_ok))
         }
 
@@ -91,6 +94,7 @@ class MatchDetailFragment : Fragment(), Injectable, PlayerAdapter.PlayerOnClickL
         mMatchNameTextView.text = mMatch.name
         mMatchDateTextView.text = date
         mMatchLocationTextView.text = mMatch.location
+        mMatchSportTextView.text = SportsFacade.getSport(mMatch.sport).getName()
     }
 
     fun loadPlayers() {
@@ -132,7 +136,7 @@ class MatchDetailFragment : Fragment(), Injectable, PlayerAdapter.PlayerOnClickL
         mPlayerAdapter =
             PlayerAdapter(
                 mPlayerViewModel.playerLiveData.value.orEmpty(),
-                this
+                this, mMatch.sport
             )
         mPlayerRecyclerView.adapter = mPlayerAdapter
 
@@ -142,7 +146,7 @@ class MatchDetailFragment : Fragment(), Injectable, PlayerAdapter.PlayerOnClickL
     override fun onPlayerSelected(player: Player) {
 
         val intent = Intent(context, PlayerDetailActivity::class.java)
-        intent.putExtra(getString(R.string.key_parcelable_match_id), mMatch.id)
+        intent.putExtra(getString(R.string.key_parcelable_match), mMatch)
         intent.putExtra(getString(R.string.key_parcelable_player), player)
         startActivityForResult(intent, Activity.RESULT_OK)
     }
