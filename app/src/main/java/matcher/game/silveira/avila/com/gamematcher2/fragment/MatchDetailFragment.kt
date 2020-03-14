@@ -24,7 +24,7 @@ import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.recyclerview.player.PlayerAdapter
 import matcher.game.silveira.avila.com.gamematcher2.recyclerview.player.PlayerItemTouchHelperCallback
-import matcher.game.silveira.avila.com.gamematcher2.sports.SportsFacade
+import matcher.game.silveira.avila.com.gamematcher2.domain.SportsFacade
 import matcher.game.silveira.avila.com.gamematcher2.viewmodel.PlayerViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -136,7 +136,7 @@ class MatchDetailFragment : Fragment(), Injectable, PlayerAdapter.PlayerOnClickL
         mPlayerAdapter =
             PlayerAdapter(
                 mPlayerViewModel.playerLiveData.value.orEmpty(),
-                this
+                this, mMatch.sport
             )
         mPlayerRecyclerView.adapter = mPlayerAdapter
 

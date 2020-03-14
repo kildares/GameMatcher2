@@ -12,8 +12,9 @@ import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.activity.MainActivity
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
-import matcher.game.silveira.avila.com.gamematcher2.sports.SportsFacade
+import matcher.game.silveira.avila.com.gamematcher2.domain.SportsFacade
 import matcher.game.silveira.avila.com.gamematcher2.viewmodel.MatchViewModel
+import java.time.DateTimeException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
@@ -82,18 +83,22 @@ class CreateMatchFragment : Fragment(), Injectable {
             matchViewModel.createMatch(name, location, date, SportsFacade.getSportIdentifierByName(sport))
             return true
         } else {
-            Toast.makeText(context, "Please input all fields",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Please input all fields correctly",Toast.LENGTH_SHORT).show();
             return false
         }
     }
 
     private fun isValidDate(date: String): Boolean {
-        LocalDate.of(
-            Integer.valueOf(date.substring(4)),
-            Integer.valueOf(date.substring(2, 4)),
-            Integer.valueOf(date.substring(0, 2))
-        ).format(DateTimeFormatter.ofPattern("dd/MM/yy"))
-        return true
+        return try{
+            LocalDate.of(
+                Integer.valueOf(date.substring(4)),
+                Integer.valueOf(date.substring(2, 4)),
+                Integer.valueOf(date.substring(0, 2))
+            ).format(DateTimeFormatter.ofPattern("dd/MM/yy"))
+            true
+        } catch (e : DateTimeException){
+            false
+        }
     }
 
 }

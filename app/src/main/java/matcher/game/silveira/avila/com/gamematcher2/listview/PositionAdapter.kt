@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.CheckBox
+import androidx.core.view.children
 import matcher.game.silveira.avila.com.gamematcher2.R
 
 class PositionAdapter(val gamePositions : List<String>, val adapterInteractions: ListViewAdapterInteractions) : BaseAdapter() {
@@ -20,10 +21,15 @@ class PositionAdapter(val gamePositions : List<String>, val adapterInteractions:
         positionCheckBox.text = gamePositions[position]
 
         positionCheckBox.setOnCheckedChangeListener { compoundButton, b ->
-            if(b && !selectedPositions.contains(gamePositions[position])){
-                selectedPositions.add(gamePositions[position])
-            } else if(!b && selectedPositions.contains(gamePositions[position])){
-                selectedPositions.remove(gamePositions[position])
+
+            if(keyPosition == null){
+                keyPosition = position
+                selectedPositions.clear()
+                if(b) {
+                    selectedPositions.add(gamePositions[position])
+                }
+                parent!!.children.filter { it != positionCheckBox && it is CheckBox}.forEach { (it as CheckBox).isChecked = false }
+                keyPosition = null
             }
         }
 
@@ -46,4 +52,7 @@ class PositionAdapter(val gamePositions : List<String>, val adapterInteractions:
         fun getLayoutInflater(): LayoutInflater
     }
 
+    companion object{
+        var keyPosition : Int? = null
+    }
 }

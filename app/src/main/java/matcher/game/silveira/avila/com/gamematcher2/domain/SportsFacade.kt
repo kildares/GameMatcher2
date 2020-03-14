@@ -1,7 +1,6 @@
-package matcher.game.silveira.avila.com.gamematcher2.sports
+package matcher.game.silveira.avila.com.gamematcher2.domain
 
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
-import java.util.stream.Collector
 
 object SportsFacade{
 
@@ -31,8 +30,14 @@ object SportsFacade{
         return sportsMap.getOrElse(identifier){throw Exception("Unsupported sport")}.convertPositionsToStr(selectedPositions)
     }
 
-    fun ConvertPositionsToMutableSet(identifier: String, positions : String) : MutableSet<String>{
+    fun convertPositionsToMutableSet(identifier: String, positions : String) : MutableSet<String>{
         return sportsMap.getOrElse(identifier){ throw Exception("Unsupported sport") }.convertPositionsToMutableSet(positions)
     }
+
+    fun isFormalAndShownIdentical(identifier : String, formalPosition : String, shownPosition : String ) : Boolean {
+        return sportsMap.getOrElse(identifier){throw Exception("Unsupported sport")}.isFormalAndShownIdentical(formalPosition, shownPosition)
+    }
+
+
 
 }
