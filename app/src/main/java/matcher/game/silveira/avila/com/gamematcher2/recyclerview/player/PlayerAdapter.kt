@@ -36,7 +36,7 @@ class PlayerAdapter(
                 val player = players.stream().filter { p ->
                     p.name == playerName && SportsFacade.isFormalAndShownIdentical(
                         sport, p.positions,
-                        pos as String
+                        pos.toString()
                     )
                 }.findFirst()
                     .orElseThrow { RuntimeException("Error validating players") }
