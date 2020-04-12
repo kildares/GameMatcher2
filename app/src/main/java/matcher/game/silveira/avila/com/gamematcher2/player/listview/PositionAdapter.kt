@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.listview
+package matcher.game.silveira.avila.com.gamematcher2.player.listview
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -20,7 +20,7 @@ class PositionAdapter(val gamePositions : List<String>, val adapterInteractions:
         val positionCheckBox = view.findViewById<CheckBox>(R.id.cb_position)
         positionCheckBox.text = gamePositions[position]
 
-        positionCheckBox.setOnCheckedChangeListener { compoundButton, b ->
+        positionCheckBox.setOnCheckedChangeListener { _, b ->
 
             if(keyPosition == null){
                 keyPosition = position

@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.viewmodel
+package matcher.game.silveira.avila.com.gamematcher2.match.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData

@@ -2,8 +2,7 @@ package matcher.game.silveira.avila.com.gamematcher2.di.module.activity
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import matcher.game.silveira.avila.com.gamematcher2.activity.MatchDetailActivity
-import matcher.game.silveira.avila.com.gamematcher2.activity.PlayerDetailActivity
+import matcher.game.silveira.avila.com.gamematcher2.player.PlayerDetailActivity
 import matcher.game.silveira.avila.com.gamematcher2.di.module.FragmentBuildersModule
 
 @Module

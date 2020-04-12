@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.recyclerview.match
+package matcher.game.silveira.avila.com.gamematcher2.match.recyclerview
 
 import android.app.AlertDialog
 import android.content.Context
@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import matcher.game.silveira.avila.com.gamematcher2.R
-import matcher.game.silveira.avila.com.gamematcher2.viewmodel.MatchViewModel
+import matcher.game.silveira.avila.com.gamematcher2.match.viewmodel.MatchViewModel
 
 class MatchItemTouchHelperCallback(
     val adapter: MatchAdapter,
@@ -38,9 +38,9 @@ class MatchItemTouchHelperCallback(
 
         AlertDialog.Builder(context).setTitle(context.getString(R.string.alert_dialog_remove_match_title)).setPositiveButton(
             context.getString(R.string.alert_dialog_remove_match_positive)
-        ) { dialogInterface: DialogInterface, i: Int ->
+        ) { dialogInterface: DialogInterface, _: Int ->
             mViewModel.removeMatch(position)
-        }.setNegativeButton(context.getString(R.string.alert_dialog_remove_match_negative)) { dialogInterface: DialogInterface, i: Int ->
+        }.setNegativeButton(context.getString(R.string.alert_dialog_remove_match_negative)) { _: DialogInterface, i: Int ->
             adapter.notifyItemChanged(viewHolder.adapterPosition)
         }.setOnCancelListener{
                 adapter.notifyItemChanged(viewHolder.adapterPosition)}.create().show()

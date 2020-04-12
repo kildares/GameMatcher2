@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.activity
+package matcher.game.silveira.avila.com.gamematcher2.player
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,6 @@ import dagger.android.HasAndroidInjector
 import matcher.game.silveira.avila.com.gamematcher2.R
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
-import matcher.game.silveira.avila.com.gamematcher2.fragment.PlayerDetailFragment
 import javax.inject.Inject
 
 class PlayerDetailActivity : AppCompatActivity(), HasAndroidInjector {

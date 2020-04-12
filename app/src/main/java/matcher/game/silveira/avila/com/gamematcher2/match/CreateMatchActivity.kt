@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.activity
+package matcher.game.silveira.avila.com.gamematcher2.match
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

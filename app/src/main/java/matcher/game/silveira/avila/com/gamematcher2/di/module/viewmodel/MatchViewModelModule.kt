@@ -7,8 +7,8 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelKey
-import matcher.game.silveira.avila.com.gamematcher2.viewmodel.MatchViewModel
-import matcher.game.silveira.avila.com.gamematcher2.viewmodel.PlayerViewModel
+import matcher.game.silveira.avila.com.gamematcher2.match.viewmodel.MatchViewModel
+import matcher.game.silveira.avila.com.gamematcher2.player.viewmodel.PlayerViewModel
 
 @Module
 abstract class MatchViewModelModule {

@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".player.PlayerDetailActivity">
+    tools:context=".pick.PickTeamActivity">
 
     <fragment
-        android:id="@+id/fr_player_detail"
-        android:name="matcher.game.silveira.avila.com.gamematcher2.player.PlayerDetailFragment"
+        android:id="@+id/fr_pick_team"
+        android:name="matcher.game.silveira.avila.com.gamematcher2.pick.fragment.PickTeamFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

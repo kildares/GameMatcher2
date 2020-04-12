@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.recyclerview.player
+package matcher.game.silveira.avila.com.gamematcher2.player.recyclerview
 
 import android.app.AlertDialog
 import android.content.Context
@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import matcher.game.silveira.avila.com.gamematcher2.R
-import matcher.game.silveira.avila.com.gamematcher2.viewmodel.PlayerViewModel
+import matcher.game.silveira.avila.com.gamematcher2.player.viewmodel.PlayerViewModel
 
 class PlayerItemTouchHelperCallback(
     val adapter: PlayerAdapter,

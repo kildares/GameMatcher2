@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.fragment
+package matcher.game.silveira.avila.com.gamematcher2.player
 
 import android.app.Activity
 import android.os.Bundle
@@ -13,9 +13,9 @@ import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
-import matcher.game.silveira.avila.com.gamematcher2.listview.PositionAdapter
+import matcher.game.silveira.avila.com.gamematcher2.player.listview.PositionAdapter
 import matcher.game.silveira.avila.com.gamematcher2.domain.SportsFacade
-import matcher.game.silveira.avila.com.gamematcher2.viewmodel.PlayerViewModel
+import matcher.game.silveira.avila.com.gamematcher2.player.viewmodel.PlayerViewModel
 import javax.inject.Inject
 
 

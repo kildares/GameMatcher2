@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.fragment
+package matcher.game.silveira.avila.com.gamematcher2.match.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,7 @@ import matcher.game.silveira.avila.com.gamematcher2.activity.MainActivity
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.domain.SportsFacade
-import matcher.game.silveira.avila.com.gamematcher2.viewmodel.MatchViewModel
+import matcher.game.silveira.avila.com.gamematcher2.match.viewmodel.MatchViewModel
 import java.time.DateTimeException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

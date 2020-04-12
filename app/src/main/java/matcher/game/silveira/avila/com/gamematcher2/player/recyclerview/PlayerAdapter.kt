@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.recyclerview.player
+package matcher.game.silveira.avila.com.gamematcher2.player.recyclerview
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

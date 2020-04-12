@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.fragment
+package matcher.game.silveira.avila.com.gamematcher2.match.fragment
 
 import android.app.Activity
 import android.content.Context
@@ -17,15 +17,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import matcher.game.silveira.avila.com.gamematcher2.R
-import matcher.game.silveira.avila.com.gamematcher2.activity.PlayerDetailActivity
+import matcher.game.silveira.avila.com.gamematcher2.player.PlayerDetailActivity
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
-import matcher.game.silveira.avila.com.gamematcher2.recyclerview.player.PlayerAdapter
-import matcher.game.silveira.avila.com.gamematcher2.recyclerview.player.PlayerItemTouchHelperCallback
+import matcher.game.silveira.avila.com.gamematcher2.player.recyclerview.PlayerAdapter
+import matcher.game.silveira.avila.com.gamematcher2.player.recyclerview.PlayerItemTouchHelperCallback
 import matcher.game.silveira.avila.com.gamematcher2.domain.SportsFacade
-import matcher.game.silveira.avila.com.gamematcher2.viewmodel.PlayerViewModel
+import matcher.game.silveira.avila.com.gamematcher2.pick.PickTeamActivity
+import matcher.game.silveira.avila.com.gamematcher2.player.viewmodel.PlayerViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
@@ -73,7 +74,9 @@ class MatchDetailFragment : Fragment(), Injectable, PlayerAdapter.PlayerOnClickL
         }
 
         mPickTeamButton.setOnClickListener {
-            Log.d("Players", mPlayerViewModel.playerLiveData.value?.size.toString())
+
+            val intent = Intent(context, PickTeamActivity::class.java)
+            startActivity(intent)
         }
 
         loadPlayers()

@@ -12,10 +12,10 @@ class Match(val name : String, val location : String, val date : String, val spo
     var id : Int = 0
 
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString()
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!
     ) {
         id = parcel.readInt()
     }

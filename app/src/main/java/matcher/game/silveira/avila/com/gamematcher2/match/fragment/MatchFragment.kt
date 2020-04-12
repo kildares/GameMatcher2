@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.fragment
+package matcher.game.silveira.avila.com.gamematcher2.match.fragment
 
 import android.content.Context
 import android.content.Intent
@@ -15,14 +15,14 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import matcher.game.silveira.avila.com.gamematcher2.R
-import matcher.game.silveira.avila.com.gamematcher2.activity.CreateMatchActivity
-import matcher.game.silveira.avila.com.gamematcher2.activity.MatchDetailActivity
+import matcher.game.silveira.avila.com.gamematcher2.match.CreateMatchActivity
 import matcher.game.silveira.avila.com.gamematcher2.db.entities.Match
 import matcher.game.silveira.avila.com.gamematcher2.di.Injectable
 import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
-import matcher.game.silveira.avila.com.gamematcher2.recyclerview.match.MatchAdapter
-import matcher.game.silveira.avila.com.gamematcher2.recyclerview.match.MatchItemTouchHelperCallback
-import matcher.game.silveira.avila.com.gamematcher2.viewmodel.MatchViewModel
+import matcher.game.silveira.avila.com.gamematcher2.match.MatchDetailActivity
+import matcher.game.silveira.avila.com.gamematcher2.match.recyclerview.MatchAdapter
+import matcher.game.silveira.avila.com.gamematcher2.match.recyclerview.MatchItemTouchHelperCallback
+import matcher.game.silveira.avila.com.gamematcher2.match.viewmodel.MatchViewModel
 import javax.inject.Inject
 
 class MatchFragment : Fragment(), Injectable, MatchAdapter.MatchOnClickListener {

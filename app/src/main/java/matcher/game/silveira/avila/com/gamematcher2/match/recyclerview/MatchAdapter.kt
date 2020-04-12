@@ -1,4 +1,4 @@
-package matcher.game.silveira.avila.com.gamematcher2.recyclerview.match
+package matcher.game.silveira.avila.com.gamematcher2.match.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
