@@ -107,8 +107,9 @@ class PickTeamFragment : Fragment(), Injectable {
 
     private fun pickTeams(){
         Toast.makeText(activity, "Chosen option: ${selectedOption.name}", Toast.LENGTH_LONG).show()
-        adapter.teams = SportsFacade.pickTeams(mMatch.sport, mPlayerViewModel.playerLiveData.value ?: emptyList()  , selectedOption)
-        adapter.notifyDataSetChanged()
+
+        val pickedTeams = SportsFacade.pickTeams(mMatch.sport, mPlayerViewModel.playerLiveData.value ?: emptyList()  , selectedOption)
+        adapter.updateTeams(pickedTeams)
     }
 
 }

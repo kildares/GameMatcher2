@@ -23,7 +23,33 @@ object FootballSeven : Sports {
     }
 
     private fun pickTeamsWithFixedGoalkeeperOnly(players: List<Player>) : List<Team> {
-        return emptyList()
+
+        val keepers = players.filter { convertPositionsToMutableSet(it.positions).contains(Position.Goal.name) }.toMutableList()
+
+        if(keepers.isEmpty()){
+            return pickTeamsRandomly(players)
+        }
+
+        val other = players.filterNot { convertPositionsToMutableSet(it.positions).contains(Position.Goal.name) }.toMutableList()
+
+        val teamList = mutableListOf<Team>()
+        val currentTeam = mutableListOf<Player>()
+        while(keepers.isNotEmpty() && other.isNotEmpty()){
+
+            val pos = Random.nextInt(0, other.size)
+
+            val player = other[pos]
+            currentTeam.add(player)
+
+            if(currentTeam.size >= 6){
+                teamList.add(Team(currentTeam + listOf(keepers[0])))
+                keepers.remove(keepers[0])
+                currentTeam.clear()
+            }
+            other.remove(other[pos])
+        }
+
+        return teamList + pickTeamsRandomly(keepers + other + currentTeam)
     }
 
     private fun pickTeamsRandomly(players: List<Player>) : List<Team>{
@@ -44,6 +70,10 @@ object FootballSeven : Sports {
                 currentTeam = mutableListOf()
             }
             mutablePlayers.remove(player)
+        }
+
+        if(currentTeam.isNotEmpty()){
+            teamList.add(Team(currentTeam))
         }
 
         return teamList
