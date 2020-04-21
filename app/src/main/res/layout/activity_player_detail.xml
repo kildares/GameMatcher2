@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fr_player_detail"
-        android:name="matcher.game.silveira.avila.com.gamematcher2.player.PlayerDetailFragment"
+        android:name="silveira.avila.com.gamematcher2.player.PlayerDetailFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
