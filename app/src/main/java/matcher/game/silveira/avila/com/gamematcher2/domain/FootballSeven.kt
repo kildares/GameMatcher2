@@ -13,7 +13,7 @@ object FootballSeven : Sports {
     }
 
     override fun sortByPositions(players : List<Player>) : List<Team>{
-        return listOf(Team(listOf("")))
+        return listOf(Team(emptyList()))
     }
 
     override fun getPlayerPositions(selectedPositions: Set<String>) {

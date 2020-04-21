@@ -1,15 +1,15 @@
 package matcher.game.silveira.avila.com.gamematcher2.player.listview
 
 import android.annotation.SuppressLint
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.CheckBox
 import androidx.core.view.children
 import matcher.game.silveira.avila.com.gamematcher2.R
+import matcher.game.silveira.avila.com.gamematcher2.util.ListViewAdapterInteractions
 
-class PositionAdapter(val gamePositions : List<String>, val adapterInteractions: ListViewAdapterInteractions) : BaseAdapter() {
+class PositionAdapter(private val gamePositions : List<String>, private val adapterInteractions: ListViewAdapterInteractions) : BaseAdapter() {
 
     val selectedPositions = mutableSetOf<String>()
 
@@ -46,10 +46,6 @@ class PositionAdapter(val gamePositions : List<String>, val adapterInteractions:
 
     override fun getCount(): Int {
         return gamePositions.size
-    }
-
-    interface ListViewAdapterInteractions {
-        fun getLayoutInflater(): LayoutInflater
     }
 
     companion object{

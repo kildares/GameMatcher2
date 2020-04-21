@@ -76,6 +76,7 @@ class MatchDetailFragment : Fragment(), Injectable, PlayerAdapter.PlayerOnClickL
         mPickTeamButton.setOnClickListener {
 
             val intent = Intent(context, PickTeamActivity::class.java)
+            intent.putExtra(getString(R.string.key_parcelable_match), mMatch)
             startActivity(intent)
         }
 

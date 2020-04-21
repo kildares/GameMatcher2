@@ -1,5 +1,7 @@
 package matcher.game.silveira.avila.com.gamematcher2.domain
 
-data class Team(val players : List<String>){
+import matcher.game.silveira.avila.com.gamematcher2.db.entities.Player
+
+data class Team(val players : List<Player>){
 
 }

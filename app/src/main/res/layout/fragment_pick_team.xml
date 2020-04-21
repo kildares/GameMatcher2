@@ -1,40 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pick.fragment.PickTeamFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".pick.fragment.PickTeamFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_pick_team"
+        style="@style/ToolbarGameTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
-        style="@style/ToolbarGameTheme"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
         <TextView
             android:id="@+id/tv_title_match_detail"
+            style="@style/ToolbarGameTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/toolbar_title_pick_team"
-            android:textColor="@color/colorTextPrimary"
-            style="@style/ToolbarGameTheme"
-            />
+            android:textColor="@color/colorTextPrimary" />
 
     </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_top"
+        >
+
+        <RadioGroup
+            android:id="@+id/rg_pick_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+
+            <RadioButton
+                android:id="@+id/rb_all_random"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_pick_random"/>
+            <RadioButton
+                android:id="@+id/rb_positions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_pick_position"/>
+            <RadioButton
+                android:id="@+id/rb_goalkeepers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_pick_goalkeeper"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/bt_pick_team"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/text_button_pick"
+            android:layout_weight="2"
+            />
+    </LinearLayout>
 
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <com.google.android.material.tabs.TabLayout
+
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

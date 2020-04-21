@@ -16,10 +16,11 @@ import matcher.game.silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import matcher.game.silveira.avila.com.gamematcher2.player.listview.PositionAdapter
 import matcher.game.silveira.avila.com.gamematcher2.domain.SportsFacade
 import matcher.game.silveira.avila.com.gamematcher2.player.viewmodel.PlayerViewModel
+import matcher.game.silveira.avila.com.gamematcher2.util.ListViewAdapterInteractions
 import javax.inject.Inject
 
 
-class PlayerDetailFragment : Fragment(), Injectable, PositionAdapter.ListViewAdapterInteractions {
+class PlayerDetailFragment : Fragment(), Injectable, ListViewAdapterInteractions {
 
     private lateinit var mConfirmButton: Button
     private lateinit var mPlayerName: EditText

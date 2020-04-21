@@ -52,6 +52,7 @@
     <string name="text_pick_random">All Random</string>
     <string name="text_pick_goalkeeper">Fixed Goalkeepers</string>
     <string name="text_pick_position">Use positions</string>
+    <string name="text_button_pick">GO</string>
 
     <string name="log_event">event</string>
 
