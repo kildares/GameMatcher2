@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".pick.fragment.PickTeamFragment">
 
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
+        app:navigationIcon="?attr/homeAsUpIndicator"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
         <TextView
@@ -67,19 +69,24 @@
             />
     </LinearLayout>
 
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vp_viewPager"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </androidx.viewpager.widget.ViewPager>
 
         <com.google.android.material.tabs.TabLayout
 
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            />
 
-    </androidx.viewpager.widget.ViewPager>
-
+    </RelativeLayout>
 
 </LinearLayout>

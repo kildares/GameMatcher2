@@ -6,10 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.forEach
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
@@ -33,15 +31,15 @@ import javax.inject.Inject
  */
 class PickTeamFragment : Fragment(), Injectable {
 
-    private lateinit var viewPager : ViewPager
-    private lateinit var adapter : TeamPagerAdapter
-    private lateinit var tabLayout : TabLayout
-    private lateinit var mMatch : Match
-    private lateinit var radioGroup : RadioGroup
-    private lateinit var pickButton : Button
+    private lateinit var viewPager: ViewPager
+    private lateinit var adapter: TeamPagerAdapter
+    private lateinit var tabLayout: TabLayout
+    private lateinit var mMatch: Match
+    private lateinit var radioGroup: RadioGroup
+    private lateinit var pickButton: Button
 
-    private lateinit var radioButtonMap : Map<RadioButton, PickTeamOptions>
-    private lateinit var selectedOption : PickTeamOptions
+    private lateinit var radioButtonMap: Map<RadioButton, PickTeamOptions>
+    private lateinit var selectedOption: PickTeamOptions
 
     private lateinit var mPlayerViewModel: PlayerViewModel
 
@@ -57,13 +55,19 @@ class PickTeamFragment : Fragment(), Injectable {
 
         viewPager = inflater.findViewById(R.id.vp_viewPager)
 
-        val match = activity?.intent?.extras?.getParcelable<Match>(getString(R.string.key_parcelable_match))
-        if(match != null){
+        val match =
+            activity?.intent?.extras?.getParcelable<Match>(getString(R.string.key_parcelable_match))
+        if (match != null) {
             mMatch = match
             loadPlayers()
         }
 
-        adapter = TeamPagerAdapter(mMatch.sport, null, activity!!.supportFragmentManager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
+        adapter = TeamPagerAdapter(
+            mMatch.sport,
+            null,
+            activity!!.supportFragmentManager,
+            FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+        )
         viewPager.adapter = adapter
 
         tabLayout = inflater.findViewById(R.id.tab_layout)
@@ -78,7 +82,7 @@ class PickTeamFragment : Fragment(), Injectable {
             Pair(inflater.findViewById(R.id.rb_positions), PickTeamOptions.BY_POSITION)
         )
 
-        radioGroup.setOnCheckedChangeListener{group: RadioGroup?, checkedId: Int ->
+        radioGroup.setOnCheckedChangeListener { group: RadioGroup?, checkedId: Int ->
 
             val mutableList = mutableListOf<RadioButton>()
             group?.forEach { mutableList.add(it as RadioButton) }
@@ -86,11 +90,16 @@ class PickTeamFragment : Fragment(), Injectable {
             selectedOption = radioButtonMap[selected] ?: error("No option selected")
         }
 
-        pickButton.setOnClickListener{
-            if(this::selectedOption.isInitialized){
+        pickButton.setOnClickListener {
+            if (this::selectedOption.isInitialized) {
                 pickTeams()
             }
         }
+
+        inflater.findViewById<Toolbar>(R.id.tb_pick_team).setNavigationOnClickListener {
+            activity!!.finish()
+        }
+
 
         return inflater
     }
@@ -105,10 +114,14 @@ class PickTeamFragment : Fragment(), Injectable {
         }
     }
 
-    private fun pickTeams(){
+    private fun pickTeams() {
         Toast.makeText(activity, "Chosen option: ${selectedOption.name}", Toast.LENGTH_LONG).show()
 
-        val pickedTeams = SportsFacade.pickTeams(mMatch.sport, mPlayerViewModel.playerLiveData.value ?: emptyList()  , selectedOption)
+        val pickedTeams = SportsFacade.pickTeams(
+            mMatch.sport,
+            mPlayerViewModel.playerLiveData.value ?: emptyList(),
+            selectedOption
+        )
         adapter.updateTeams(pickedTeams)
     }
 

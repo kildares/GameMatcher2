@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -78,6 +79,10 @@ class MatchDetailFragment : Fragment(), Injectable, PlayerAdapter.PlayerOnClickL
             val intent = Intent(context, PickTeamActivity::class.java)
             intent.putExtra(getString(R.string.key_parcelable_match), mMatch)
             startActivity(intent)
+        }
+
+        view.findViewById<Toolbar>(R.id.tb_detail_match).setNavigationOnClickListener{
+            activity!!.finish()
         }
 
         loadPlayers()

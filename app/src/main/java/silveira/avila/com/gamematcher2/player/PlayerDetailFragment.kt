@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import silveira.avila.com.gamematcher2.R
@@ -75,6 +76,12 @@ class PlayerDetailFragment : Fragment(), Injectable, ListViewAdapterInteractions
                 Toast.makeText(context, "Invalid player information", Toast.LENGTH_LONG).show()
             }
         }
+
+        view.findViewById<Toolbar>(R.id.tb_detail_player).setNavigationOnClickListener{
+            activity!!.finish()
+        }
+
+
         return view
     }
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import silveira.avila.com.gamematcher2.R
@@ -59,6 +60,11 @@ class CreateMatchFragment : Fragment(), Injectable {
                 startMainActivity()
             }
         }
+
+        view.findViewById<Toolbar>(R.id.tb_create_match).setNavigationOnClickListener{
+            activity!!.finish()
+        }
+
         return view
     }
 

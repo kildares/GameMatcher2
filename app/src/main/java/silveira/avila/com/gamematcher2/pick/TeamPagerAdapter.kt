@@ -24,4 +24,10 @@ class TeamPagerAdapter(var sport : String, var teams : MutableList<Team>?, fm: F
     }
 
     override fun getCount() = teams?.size ?: 0
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return if(position > TEAM_TITLES.size) "EXTRA" else TEAM_TITLES[position]
+    }
 }
+
+private val TEAM_TITLES = listOf("Alpha", "Beta", "Charlie", "Delta", "Gamma")
