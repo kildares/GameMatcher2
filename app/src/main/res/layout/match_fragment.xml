@@ -39,16 +39,15 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add_match"
+            style="@style/ExtendedGameTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/margin_fab"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="@dimen/margin_fab"
-            android:layout_gravity="bottom|end"
-            app:srcCompat="@android:drawable/ic_input_add"
-            style="@style/ExtendedGameTheme"
-
-            />
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:srcCompat="@android:drawable/ic_input_add" />
     </FrameLayout>
 </LinearLayout>
 

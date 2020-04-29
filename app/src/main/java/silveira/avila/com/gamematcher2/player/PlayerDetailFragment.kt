@@ -46,7 +46,7 @@ class PlayerDetailFragment : Fragment(), Injectable, ListViewAdapterInteractions
 
         mConfirmButton = view.findViewById(R.id.bt_player_detail_confirm)
         mPlayerName = view.findViewById(R.id.et_detail_player_name)
-        mPlayerDetailTitle2 = view.findViewById(R.id.tv_title_player_detail_2)
+        mPlayerDetailTitle2 = view.findViewById(R.id.tv_title_player_detail)
 
         mPositions = view.findViewById(R.id.rv_positions)
 

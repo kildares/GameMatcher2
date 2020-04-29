@@ -14,10 +14,11 @@
     <string name="bt_add_player">Add</string>
     <string name="bt_pick_team">Pick Teams</string>
 
-    <string name="toolbar_title_match_list">Game Matcher</string>
+    <string name="toolbar_title_match_list">Your matches</string>
+    <string name="toolbar_title_match_details">Match Details</string>
     <string name="toolbar_title_create_match">Create Match</string>
-    <string name="toolbar_title_edit_player"> - Edit Player</string>
-    <string name="toolbar_title_add_player"> - Add Player</string>
+    <string name="toolbar_title_edit_player">Edit Player</string>
+    <string name="toolbar_title_add_player">Add Player</string>
     <string name="toolbar_title_pick_team"> Pick Teams</string>
 
     <string name="alert_dialog_remove_match_title">Remove Match?</string>

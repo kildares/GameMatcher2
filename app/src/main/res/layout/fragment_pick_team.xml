@@ -64,9 +64,9 @@
             android:id="@+id/bt_pick_team"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/text_button_pick"
             android:layout_weight="2"
-            />
+            android:background="@color/colorAccent"
+            android:text="@string/text_button_pick" />
     </LinearLayout>
 
     <RelativeLayout
