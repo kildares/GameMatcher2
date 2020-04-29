@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".fragment.CreateMatchFragment">
+    tools:context=".match.fragment.CreateMatchFragment">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ToolbarGameTheme"
+        app:navigationIcon="?attr/homeAsUpIndicator"
         >
 
         <TextView

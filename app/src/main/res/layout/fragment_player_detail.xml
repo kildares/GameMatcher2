@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.PlayerDetailFragment"
+    tools:context=".player.PlayerDetailFragment"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tb_detail_match"
+        android:id="@+id/tb_detail_player"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
@@ -16,6 +16,7 @@
         style="@style/ToolbarGameTheme"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:navigationIcon="?attr/homeAsUpIndicator"
         >
 
         <TextView

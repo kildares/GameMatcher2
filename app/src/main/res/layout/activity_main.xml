@@ -11,7 +11,7 @@
 
     <fragment
         android:id="@+id/fr_matches"
-        android:name="matcher.game.silveira.avila.com.gamematcher2.fragment.MatchFragment"
+        android:name="silveira.avila.com.gamematcher2.match.fragment.MatchFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

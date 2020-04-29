@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.PlayerDetailActivity">
+    tools:context=".player.PlayerDetailActivity">
 
     <fragment
         android:id="@+id/fr_player_detail"
-        android:name="matcher.game.silveira.avila.com.gamematcher2.fragment.PlayerDetailFragment"
+        android:name="silveira.avila.com.gamematcher2.player.PlayerDetailFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

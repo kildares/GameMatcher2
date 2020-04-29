@@ -18,6 +18,7 @@
     <string name="toolbar_title_create_match">Create Match</string>
     <string name="toolbar_title_edit_player"> - Edit Player</string>
     <string name="toolbar_title_add_player"> - Add Player</string>
+    <string name="toolbar_title_pick_team"> Pick Teams</string>
 
     <string name="alert_dialog_remove_match_title">Remove Match?</string>
     <string name="alert_dialog_remove_match_positive">Yes</string>
@@ -48,6 +49,13 @@
 
     <string name="bt_player_detail_confirm">Confirm</string>
 
+    <string name="text_pick_random">All Random</string>
+    <string name="text_pick_goalkeeper">Fixed Goalkeepers</string>
+    <string name="text_pick_position">Use positions</string>
+    <string name="text_button_pick">GO</string>
 
     <string name="log_event">event</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
