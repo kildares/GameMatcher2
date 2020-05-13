@@ -94,8 +94,8 @@ class MatchDetailFragment : Fragment(), Injectable, PlayerAdapter.PlayerOnClickL
     private fun loadMatchData() {
 
         val date = LocalDate.of(
-            Integer.valueOf(mMatch.date.substring(4)),
-            Integer.valueOf(mMatch.date.substring(2, 4)),
+            Integer.valueOf(mMatch.date.substring(6)),
+            Integer.valueOf(mMatch.date.substring(3, 5)),
             Integer.valueOf(mMatch.date.substring(0, 2))
         )
             .format(DateTimeFormatter.ofPattern("dd/MM/yy"))

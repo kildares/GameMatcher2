@@ -16,6 +16,7 @@
         <item name="android:layout_marginEnd">@dimen/margin_end</item>
         <item name="android:layout_marginTop">@dimen/margin_top</item>
         <item name="android:layout_marginBottom">@dimen/margin_bottom</item>
+        <item name="android:datePickerMode">spinner</item>
     </style>
 
     <style name="ToolbarGameTheme" parent = "DefaultGameTheme">

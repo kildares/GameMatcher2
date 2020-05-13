@@ -14,7 +14,7 @@
 
     <dimen name="match_title_text_size">24sp</dimen>
     <dimen name="match_text_size">20sp</dimen>
-    <dimen name="space_height">30dp</dimen>
+    <dimen name="space_height">20dp</dimen>
 
     <dimen name="player_text_size">20sp</dimen>
 </resources>
