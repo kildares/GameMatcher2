@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_margin="4dp"
         android:textSize="18sp"
+        style="@style/ExtendedGameTheme"
         />
 
     <TextView
@@ -19,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_margin="4dp"
         android:textSize="18sp"
+        style="@style/ExtendedGameTheme"
         />
 
 

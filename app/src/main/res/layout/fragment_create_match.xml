@@ -21,17 +21,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_top"
-            android:text="@string/toolbar_title_match_list"
+            android:text="@string/toolbar_title_create_match"
             android:textColor="@color/colorTextPrimary"
             style="@style/ToolbarGameTheme"
-            />
-
-
-        <TextView
-            android:text="@string/toolbar_title_create_match"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorTextPrimary"
             />
 
     </androidx.appcompat.widget.Toolbar>
@@ -125,25 +117,39 @@
 
         <TextView
             android:id="@+id/tv_create_match_date"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/title_match_date"
             android:textSize="@dimen/player_text_size"
             android:textColor="@color/colorTextPrimary"
             android:layout_margin="@dimen/margin_top"
-
+            android:layout_weight="1.5"
             />
 
-        <EditText
-            android:id="@+id/et_create_match_date"
+        <TextView
+            android:id="@+id/tv_create_match_date_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_match_date"
             android:importantForAutofill="no"
             android:inputType="date"
             android:layout_margin="@dimen/margin_top"
+            android:layout_weight="1"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="@dimen/player_text_size"
             />
-    </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_create_match_pick_date"
+            android:text="Pick Date"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            style="@style/ExtendedGameTheme"
+            />
+
+    </LinearLayout>]
 
     <Button
         android:id="@+id/bt_save_match"
@@ -151,6 +157,6 @@
         android:layout_height="wrap_content"
         android:text="@string/text_crete_match_button"
         android:layout_margin="@dimen/margin_top"
-
+        android:background="@color/colorAccent"
         />
 </LinearLayout>

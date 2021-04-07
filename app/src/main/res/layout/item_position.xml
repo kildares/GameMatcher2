@@ -5,5 +5,5 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:text="@string/example_player_position"
-
+    style="@style/ExtendedGameTheme"
     />

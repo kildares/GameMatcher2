@@ -115,7 +115,6 @@ class PickTeamFragment : Fragment(), Injectable {
     }
 
     private fun pickTeams() {
-        Toast.makeText(activity, "Chosen option: ${selectedOption.name}", Toast.LENGTH_LONG).show()
 
         val pickedTeams = SportsFacade.pickTeams(
             mMatch.sport,
