@@ -1,30 +1,22 @@
 package silveira.avila.com.gamematcher2.match.fragment
 
-import android.app.AlertDialog
-import android.app.DatePickerDialog
-import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.widget.AlertDialogLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import silveira.avila.com.gamematcher2.R
 import silveira.avila.com.gamematcher2.activity.MainActivity
 import silveira.avila.com.gamematcher2.di.Injectable
 import silveira.avila.com.gamematcher2.di.MatchViewModelFactory
 import silveira.avila.com.gamematcher2.domain.SportsFacade
 import silveira.avila.com.gamematcher2.match.viewmodel.MatchViewModel
-import java.time.DateTimeException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.logging.Logger
 import javax.inject.Inject
 
 class CreateMatchFragment : Fragment(), Injectable {
@@ -77,10 +69,10 @@ class CreateMatchFragment : Fragment(), Injectable {
         mDatePickButton.setOnClickListener {
 
             val alertDialog = androidx.appcompat.app.AlertDialog.Builder(activity!!).create()
-            val view = activity!!.layoutInflater.inflate(R.layout.date_picker, null)
+            val activityView = activity!!.layoutInflater.inflate(R.layout.date_picker, null)
             val datePicker = view.findViewById<DatePicker>(R.id.dp_date_picker)
             alertDialog.setView(view)
-            view.findViewById<TextView>(R.id.tv_match_date).setOnClickListener{_ ->
+            activityView.findViewById<TextView>(R.id.tv_match_date).setOnClickListener{_ ->
                 mDateTextView.text = "${datePicker.dayOfMonth.toString().padStart(2, '0')}/${(datePicker.month + 1).toString().padStart(2, '0')}/${datePicker.year}"
                 alertDialog.dismiss()
             }
@@ -92,7 +84,8 @@ class CreateMatchFragment : Fragment(), Injectable {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        matchViewModel = ViewModelProviders.of(this, this.viewModelFactory).get(MatchViewModel::class.java)
+        matchViewModel = ViewModelProvider(this, this.viewModelFactory).get(MatchViewModel::class.java)
+        //matchViewModel = ViewModelProviders.of(this, this.viewModelFactory).get(MatchViewModel::class.java)
     }
 
 
